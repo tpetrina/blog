@@ -1,5 +1,5 @@
 {
-  "name": "massivepixel-site",
+  "name": "tpetrina.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,14 +11,21 @@
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^11.1.2",
+    "gray-matter": "^4.0.3",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "remark": "^14.0.1",
+    "remark-html": "^15.0.0",
+    "remark-prism": "^1.3.6"
   },
   "devDependencies": {
     "@types/react": "17.0.27",
+    "autoprefixer": "^10.4.2",
     "eslint": "8.0.0",
     "eslint-config-next": "11.1.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.17",
     "typescript": "4.4.3"
   }
 }

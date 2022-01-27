@@ -1,9 +1,12 @@
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx$/,
-});
+const withMDX = require("@next/mdx");
 
 /** @type {import('next').NextConfig} */
 module.exports = withMDX({
+  extension: /\.mdx$/,
+  options: {
+    remarkPlugins: [require("remark-prism")],
+  },
+})({
   reactStrictMode: true,
-  pageExtensions: ["tsx", "mdx"],
+  pageExtensions: ["ts", "tsx", "mdx"],
 });
