@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+import ActiveLink from "../components/active-link";
 import Footer from "../components/footer";
 
 const Home: NextPage = () => {
@@ -13,21 +13,42 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="my-4">
-        <ul>
-          <Link href="/">Home</Link>
+      <nav className="my-8 px-8">
+        <ul className="flex flex-row items-center space-x-8">
+          <ActiveLink
+            wrapper="li"
+            activeClassName="font-bold hover:underline underline-offset-4"
+            href="/"
+          >
+            Home
+          </ActiveLink>
+
+          {/* <ActiveLink
+            wrapper="li"
+            activeClassName="underline underline-offset-4"
+            href="/blog"
+          >
+            Blog
+          </ActiveLink> */}
         </ul>
       </nav>
 
-      <main className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16">
-        <section className="flex flex-row w-full">
-          <section className="flex flex-col">
-            <h1 className="font-bold text-3xl mt-4 mr-4 text-black dark:text-white">
+      <main className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 mx-8">
+        <section className="flex flex-col-reverse sm:flex-row w-full">
+          <section className="flex flex-col mr-8">
+            <h1 className="font-bold text-3xl mt-4 mr-4 mb-2 text-black dark:text-white">
               Toni Petrina
             </h1>
-            <p>Site Reliability Engineer @ Visma e-conomic a/s</p>
+            <h2 className="mb-4">
+              Site Reliability Engineer @ Visma e-conomic a/s
+            </h2>
+            <p>
+              Hi, I am Toni and welcome to my blog/scratchpad/digital garden.
+              Some of the writings will be chronologically added as blog posts,
+              but some will be permanently curated.
+            </p>
           </section>
-          <section className="ml-auto">
+          <section className="min-w-[150px] w-[150px] h-[150px]">
             <Image
               className="rounded-full"
               src="/me.png"
