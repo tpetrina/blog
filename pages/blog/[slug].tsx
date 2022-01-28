@@ -3,6 +3,9 @@ import ErrorPage from "next/error";
 import React from "react";
 import { getAllPosts, getPostBySlug } from "../../lib/getPostBySlug";
 import { markdownToHtml } from "../../lib/markdownToHtml";
+import Navigation from "../../components/navigation";
+import Head from "next/head";
+import Image from "next/image";
 
 type Props = {
   post: any;
@@ -17,12 +20,35 @@ export default function BlogPostPage(props: Props) {
   }
 
   return (
-    <>
-      <h1>Blog post </h1>
+    <section className="mx-auto max-w-2xl">
+      <Head>
+        <title>
+          {post.title} | {post.publishedAt}
+        </title>
+      </Head>
 
-      <pre>{JSON.stringify(props, null, 2)}</pre>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </>
+      <Navigation />
+
+      <article className="px-8">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
+
+        <p className="flex flex-row items-center my-4">
+          <span className="mr-2">
+            <Image
+              className="rounded-full"
+              src="/me.png"
+              alt="Profile picture"
+              width={32}
+              height={32}
+            />
+          </span>
+          Toni Petrina | {post.publishedAt}
+        </p>
+
+        {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </article>
+    </section>
   );
 }
 
@@ -41,6 +67,7 @@ export async function getStaticProps({ params }: Params) {
     "content",
     "ogImage",
     "coverImage",
+    "publishedAt",
   ]);
   const content = await markdownToHtml(post.content || "");
 

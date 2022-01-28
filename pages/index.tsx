@@ -1,9 +1,10 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import ActiveLink from "../components/active-link";
-import Footer from "../components/footer";
 
+import Footer from "../components/footer";
+import Navigation from "../components/navigation";
+
+import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <div className="mx-auto max-w-2xl">
@@ -13,25 +14,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="my-8 px-8">
-        <ul className="flex flex-row items-center space-x-8">
-          <ActiveLink
-            wrapper="li"
-            activeClassName="font-bold hover:underline underline-offset-4"
-            href="/"
-          >
-            Home
-          </ActiveLink>
-
-          {/* <ActiveLink
-            wrapper="li"
-            activeClassName="underline underline-offset-4"
-            href="/blog"
-          >
-            Blog
-          </ActiveLink> */}
-        </ul>
-      </nav>
+      <Navigation />
 
       <main className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 mx-8">
         <section className="flex flex-col-reverse sm:flex-row w-full">
