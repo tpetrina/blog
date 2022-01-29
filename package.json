@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "build:cf-pages": "next build && next export",
+    "build:rss": "ts-node ./scripts/generate-rss.ts",
     "build:sitemap": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/generate-sitemap.mjs",
-    "postbuild": "yarn build:sitemap"
+    "postbuild": "yarn build:sitemap && yarn build:rss"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
@@ -28,10 +29,12 @@
     "autoprefixer": "^10.4.2",
     "eslint": "8.0.0",
     "eslint-config-next": "11.1.2",
+    "feed": "^4.2.2",
     "globby": "^13.1.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "tailwindcss": "^3.0.17",
+    "ts-node": "^10.4.0",
     "typescript": "4.4.3"
   }
 }

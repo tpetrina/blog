@@ -33,7 +33,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       items[field] = data[field];
     }
   });
-  console.log({ data, items });
+  // console.log({ data, items });
 
   return items;
 }
