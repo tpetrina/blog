@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://tpetrina.com/sitemap.xml
