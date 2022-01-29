@@ -2,12 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 
 import Footer from "../components/footer";
+import Layout from "../components/layout";
 import Navigation from "../components/navigation";
 
 import type { NextPage } from "next";
+
 const Home: NextPage = () => {
   return (
-    <div className="mx-auto max-w-2xl">
+    <Layout>
       <Head>
         <title>Toni Petrina's digital garden</title>
         <meta name="description" content="Toni Petrina's digital garden" />
@@ -16,16 +18,16 @@ const Home: NextPage = () => {
 
       <Navigation />
 
-      <main className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 mx-8">
+      <main className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 px-4">
         <section className="flex flex-col-reverse sm:flex-row w-full">
           <section className="flex flex-col mr-8">
-            <h1 className="font-bold text-3xl mt-4 mr-4 mb-2 text-black dark:text-white">
+            <h1 className="font-bold text-3xl md:text-5xl mt-4 mr-4 mb-2 text-black dark:text-white">
               Toni Petrina
             </h1>
-            <h2 className="mb-4">
+            <h2 className="mb-4 text-gray-800 dark:text-gray-100">
               Site Reliability Engineer @ Visma e-conomic a/s
             </h2>
-            <p>
+            <p className="text-gray-700">
               Hi, I am Toni and welcome to my blog/scratchpad/digital garden.
               Some of the writings will be chronologically added as blog posts,
               but some will be permanently curated.
@@ -44,7 +46,7 @@ const Home: NextPage = () => {
       </main>
 
       <Footer />
-    </div>
+    </Layout>
   );
 };
 
