@@ -10,6 +10,7 @@ import { markdownToHtml } from "../../lib/markdownToHtml";
 
 type Props = {
   post: any;
+  readingTime: any;
 };
 
 export default function BlogPostPage(props: Props) {
@@ -34,7 +35,7 @@ export default function BlogPostPage(props: Props) {
 
       <article className="px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
-        <p className="flex flex-row items-center my-4">
+        <p className="flex flex-row items-center my-4 space-x-2">
           <span className="mr-2 flex flex-row items-center">
             <img
               className="rounded-full"
@@ -45,7 +46,9 @@ export default function BlogPostPage(props: Props) {
             />
           </span>
           Toni Petrina |
-          <em className="ml-1 text-sm">Published on {post.publishedAt}</em>
+          <em className="text-sm">Published on {post.publishedAt}</em>{" "}
+          <span>|</span>
+          <span>{props.readingTime}</span>
         </p>
 
         <div
@@ -74,7 +77,9 @@ export async function getStaticProps({ params }: Params) {
     "coverImage",
     "publishedAt",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const { html: content, readingTime } = await markdownToHtml(
+    post.content || ""
+  );
 
   return {
     props: {
@@ -83,6 +88,7 @@ export async function getStaticProps({ params }: Params) {
         slug: params.slug,
         content,
       },
+      readingTime,
     },
   };
 }

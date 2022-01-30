@@ -1,6 +1,6 @@
 import { remark } from "remark";
 import html from "remark-html";
-
+import readingTime from "remark-reading-time";
 import visit from "unist-util-visit";
 
 function fixRelativeImages(options: any) {
@@ -26,6 +26,11 @@ export async function markdownToHtml(markdown: string) {
   const result = await remark()
     .use(fixRelativeImages, { absolutePath: "http://localhost:3000/blog/" })
     .use(html as unknown as any)
+    .use(readingTime as unknown as any)
     .process(markdown);
-  return result.toString();
+
+  return {
+    html: result.toString(),
+    readingTime: (result.data.readingTime as any).text,
+  };
 }
