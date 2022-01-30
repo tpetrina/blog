@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             <h2 className="mb-4 text-gray-800 dark:text-gray-100">
               Site Reliability Engineer @ Visma e-conomic a/s
             </h2>
-            <p className="text-gray-700">
+            <p className="text-gray-700 dark:text-gray-100">
               Hi, I am Toni and welcome to my blog/scratchpad/digital garden.
               Some of the writings will be chronologically added as blog posts,
               but some will be permanently curated.

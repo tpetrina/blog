@@ -6,6 +6,7 @@ import { markdownToHtml } from "../../lib/markdownToHtml";
 import Navigation from "../../components/navigation";
 import Head from "next/head";
 import Image from "next/image";
+import Layout from "../../components/layout";
 
 type Props = {
   post: any;
@@ -20,7 +21,7 @@ export default function BlogPostPage(props: Props) {
   }
 
   return (
-    <section className="mx-auto max-w-2xl">
+    <Layout>
       <Head>
         <title>
           {post.title} | {post.publishedAt}
@@ -29,11 +30,10 @@ export default function BlogPostPage(props: Props) {
 
       <Navigation />
 
-      <article className="px-8">
+      <article className="px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
-
         <p className="flex flex-row items-center my-4">
-          <span className="mr-2">
+          <span className="mr-2 flex flex-row items-center">
             <Image
               className="rounded-full"
               src="/me.png"
@@ -42,13 +42,16 @@ export default function BlogPostPage(props: Props) {
               height={32}
             />
           </span>
-          Toni Petrina | {post.publishedAt}
+          Toni Petrina |
+          <em className="ml-1 text-sm">Published on {post.publishedAt}</em>
         </p>
 
-        {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div
+          className="prose dark:prose-dark"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </article>
-    </section>
+    </Layout>
   );
 }
 
@@ -70,8 +73,6 @@ export async function getStaticProps({ params }: Params) {
     "publishedAt",
   ]);
   const content = await markdownToHtml(post.content || "");
-
-  console.log({ post, content });
 
   return {
     props: {

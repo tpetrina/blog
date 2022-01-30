@@ -33,14 +33,12 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       items[field] = data[field];
     }
   });
-  // console.log({ data, items });
 
   return items;
 }
 
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
-  console.log({ slugs });
   const posts = slugs
     .filter((slug) => slug.endsWith("md"))
     .map((slug) => getPostBySlug(slug, fields))
