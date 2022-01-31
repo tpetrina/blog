@@ -15,7 +15,7 @@ async function generate() {
     .filter((page) => page.indexOf("[") === -1)
     .map((page) => page.replace(/(.*?)\/index.tsx/, "$1.tsx"));
 
-  const posts = await globby(["posts/**/*.md"]);
+  const posts = await globby(["data/posts/**/*.md"]);
   console.log(posts);
 
   const urls = pages
@@ -31,7 +31,7 @@ async function generate() {
     })
     .concat(
       posts.map((post) => {
-        const path = post.replace(/^posts\//, "/blog/").replace(".md", "");
+        const path = post.replace(/^data\/posts\//, "/blog/").replace(".md", "");
         const route = path;
         return `
       <url>
