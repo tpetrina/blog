@@ -13,7 +13,7 @@ type Props = {
   readingTime: any;
 };
 
-export default function BlogPostPage(props: Props) {
+export default function TodayILearnedPage(props: Props) {
   const { post } = props;
 
   const router = useRouter();
@@ -79,7 +79,7 @@ export async function getStaticProps({ params }: Params) {
       "coverImage",
       "publishedAt",
     ],
-    "posts"
+    "til"
   );
   const { html: content, readingTime } = await markdownToHtml(
     post.content || ""
@@ -98,7 +98,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts(["slug"], "til");
 
   return {
     paths: posts.map(({ slug }) => {

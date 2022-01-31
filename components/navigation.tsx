@@ -22,6 +22,14 @@ export default function Navigation() {
         >
           Blog
         </ActiveLink>
+        <ActiveLink
+          wrapper="li"
+          activeClassName="font-bold"
+          className="hover:underline underline-offset-4"
+          href="/til"
+        >
+          TIL
+        </ActiveLink>
 
         <ActiveLink
           wrapper="li"

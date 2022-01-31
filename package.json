@@ -10,7 +10,8 @@
     "build:cf-pages": "next build && next export",
     "build:rss": "ts-node ./scripts/generate-rss.ts",
     "build:sitemap": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/generate-sitemap.mjs",
-    "postbuild": "yarn build:sitemap && yarn build:rss"
+    "postbuild": "yarn build:sitemap && yarn build:rss",
+    "plop": "plop"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
@@ -32,6 +33,7 @@
     "eslint-config-next": "11.1.2",
     "feed": "^4.2.2",
     "globby": "^13.1.0",
+    "plop": "^3.0.5",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "remark-reading-time": "^2.0.1",
