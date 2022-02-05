@@ -1,8 +1,9 @@
 import ErrorPage from "next/error";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 
+import CodeTheme from "../../components/code-theme";
+import Footer from "../../components/footer";
 import Layout from "../../components/layout";
 import Navigation from "../../components/navigation";
 import { getAllPosts, getPostBySlug } from "../../lib/getPostBySlug";
@@ -50,10 +51,20 @@ export default function TodayILearnedPage(props: Props) {
         </p>
 
         <div
-          className="prose dark:prose-dark"
+          className="prose dark:prose-dark max-w-none"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
+
+      <section className="flex flex-col p-4 space-y-2">
+        <hr className="border border-1 border-gray-300 dark:border-gray-600" />
+
+        <section className="flex flex-row items-center space-x-4">
+          <span>Change code theme:</span> <CodeTheme />
+        </section>
+      </section>
+
+      <Footer />
     </Layout>
   );
 }

@@ -1,6 +1,5 @@
 import ActiveLink from "./active-link";
 import ChangeThemeButton from "./change-theme-button";
-import CodeTheme from "./code-theme";
 
 export default function Navigation() {
   return (
@@ -42,8 +41,7 @@ export default function Navigation() {
         </ActiveLink>
       </ul>
 
-      <section className="ml-auto flex flex-row items-center space-x-2">
-        <CodeTheme />
+      <section className="ml-auto">
         <ChangeThemeButton />
       </section>
     </nav>
