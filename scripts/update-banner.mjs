@@ -6,6 +6,8 @@ await captureWebsite.file(
   "public/static/images/banner.png",
   {
     overwrite: true,
+    width: 1200,
+    height: 630,
   }
 );
 console.log("done!");
