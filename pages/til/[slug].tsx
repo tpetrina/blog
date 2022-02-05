@@ -41,7 +41,7 @@ export default function TodayILearnedPage(props: Props) {
           </span>
           <section className="flex flex-col">
             Toni Petrina
-            <section className="flex flex-row items-center space-x-1 text-sm text-gray-700">
+            <section className="flex flex-row items-center space-x-1 text-sm text-gray-700 dark:text-gray-300">
               <span>Published on {post.publishedAt}</span>
               <span>•</span>
               <span>{props.readingTime}</span>
