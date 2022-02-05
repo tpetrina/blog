@@ -5,10 +5,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-            rel="stylesheet"
-          />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+          <meta name="robots" content="follow, index" />
         </Head>
         <body>
           <Main />

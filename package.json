@@ -10,6 +10,8 @@
     "build:cf-pages": "next build && next export",
     "build:rss": "ts-node ./scripts/generate-rss.ts",
     "build:sitemap": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/generate-sitemap.mjs",
+    "build:screenshots": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/update-screenshots.mjs",
+    "build:banner": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/update-banner.mjs",
     "postbuild": "yarn build:sitemap && yarn build:rss",
     "plop": "plop"
   },
@@ -17,6 +19,7 @@
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^11.1.2",
     "@tailwindcss/typography": "^0.5.1",
+    "capture-website": "^2.3.0",
     "gray-matter": "^4.0.3",
     "next": "11.1.2",
     "next-themes": "^0.0.15",

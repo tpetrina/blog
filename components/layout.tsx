@@ -1,16 +1,53 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
 
 export type LayoutProps = {
   className?: string;
 };
-export default function Layout(props: React.PropsWithChildren<LayoutProps>) {
+
+export type MetaProps = {
+  description?: string;
+  type?: "website";
+  title?: string;
+  image?: string;
+};
+
+const default_image = `https://tpetrina.com/static/images/banner.png`;
+export default function Layout(
+  props: React.PropsWithChildren<LayoutProps & MetaProps>
+) {
+  const router = useRouter();
+  const {
+    title = "Toni Petrina's digital garden",
+    description = "A small corner of the internet reserved for never ending discovery of new stuff",
+    type = "website",
+    image = default_image,
+  } = props;
+  const url = `https://tpetrina.com${router.asPath}`;
+
   return (
     <>
       <Head>
-        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-        <meta name="robots" content="follow, index" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={url} />
+
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content={type} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:domain" content="tpetrina.com" />
+        <meta name="twitter:site" content="@tonipetrina1" />
+        <meta name="twitter:url" content={url} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
       </Head>
+
       <section className={`mx-auto max-w-2xl px-2 ${props.className ?? ""}`}>
         {props.children}
       </section>

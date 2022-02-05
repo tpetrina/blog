@@ -24,13 +24,7 @@ export default function TodayILearnedPage(props: Props) {
   const html = post.content;
 
   return (
-    <Layout>
-      <Head>
-        <title>
-          {post.title} | {post.publishedAt}
-        </title>
-      </Head>
-
+    <Layout title={`${post.title}`}>
       <Navigation />
 
       <article className="px-4">
@@ -45,10 +39,14 @@ export default function TodayILearnedPage(props: Props) {
               height={32}
             />
           </span>
-          Toni Petrina |
-          <em className="text-sm">Published on {post.publishedAt}</em>{" "}
-          <span>|</span>
-          <span>{props.readingTime}</span>
+          <section className="flex flex-col">
+            Toni Petrina
+            <section className="flex flex-row items-center space-x-1 text-sm text-gray-700">
+              <span>Published on {post.publishedAt}</span>
+              <span>•</span>
+              <span>{props.readingTime}</span>
+            </section>
+          </section>
         </p>
 
         <div

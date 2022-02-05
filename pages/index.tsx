@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 
 import Footer from "../components/footer";
@@ -10,12 +9,6 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Head>
-        <title>Toni Petrina's digital garden</title>
-        <meta name="description" content="Toni Petrina's digital garden" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Navigation />
 
       <main className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 px-4">

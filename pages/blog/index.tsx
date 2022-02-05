@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from "next";
-import Head from "next/head";
 import Link from "next/link";
 
 import { H1 } from "../../components/heading";
@@ -12,12 +11,6 @@ export default function BlogPostsPage(
 ) {
   return (
     <Layout>
-      <Head>
-        <title>Toni Petrina's digital garden</title>
-        <meta name="description" content="Toni Petrina's digital garden" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Navigation />
 
       <main className="px-4">

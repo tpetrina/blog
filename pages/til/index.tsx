@@ -15,6 +15,8 @@ export default function TodayILearnedPage(
       <main className="px-4">
         <H1>Today I Learned</H1>
 
+        <section className="h-[20px]" />
+
         <p>A collection of daily a-ha moments.</p>
 
         <section className="h-[20px]" />
