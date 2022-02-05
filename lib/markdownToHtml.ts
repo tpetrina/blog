@@ -2,6 +2,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import readingTime from "remark-reading-time";
 import visit from "unist-util-visit";
+import prism from "remark-prism";
 
 function fixRelativeImages(options: any) {
   function visitor(node: any) {
@@ -25,7 +26,11 @@ function fixRelativeImages(options: any) {
 export async function markdownToHtml(markdown: string) {
   const result = await remark()
     .use(fixRelativeImages, { absolutePath: "http://localhost:3000/blog/" })
-    .use(html as unknown as any)
+    // @ts-ignore
+    .use(html as unknown as any, {
+      sanitize: false,
+    })
+    .use(prism as unknown as any)
     .use(readingTime as unknown as any)
     .process(markdown);
 

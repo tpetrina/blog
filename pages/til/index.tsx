@@ -17,18 +17,22 @@ export default function TodayILearnedPage(
 
         <section className="h-[20px]" />
 
-        <p>A collection of daily a-ha moments.</p>
+        <p className="py-4 text-gray-800 dark:text-gray-200">
+          A collection of daily a-ha moments. Sometimes to just copy/paste,
+          sometimes to remember what do avoid, other times a handy reminder how
+          difficult learning all these technologies can be.
+        </p>
 
         <section className="h-[20px]" />
 
         <ul className="space-y-8">
           {(props.allPosts || []).map((post) => (
-            <li>
+            <li key={post.slug}>
               <Link href={`/til/${post.slug}`}>
                 <a className="w-full flex flex-col">
                   <section className="flex flex-col sm:flex-row w-full">
                     <h3 className="text-xl w-full">{post.title}</h3>
-                    <p className="text-sm text-gray-600 right mb-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 right mb-2">
                       {post.publishedAt}
                     </p>
                   </section>
@@ -48,8 +52,8 @@ export const getStaticProps = async () => {
     ["title", "slug", "publishedAt", "summary"],
     "til"
   );
+  allPosts.sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
 
-  console.log(allPosts);
   return {
     props: {
       allPosts,

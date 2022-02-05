@@ -20,12 +20,12 @@ export default function BlogPostsPage(
 
         <ul className="space-y-8">
           {(props.allPosts || []).map((post) => (
-            <li>
+            <li key={post.slug}>
               <Link href={`/blog/${post.slug}`}>
                 <a className="w-full flex flex-col">
                   <section className="flex flex-col sm:flex-row w-full">
                     <h3 className="text-xl w-full">{post.title}</h3>
-                    <p className="text-sm text-gray-600 right mb-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 right mb-2">
                       {post.publishedAt}
                     </p>
                   </section>
@@ -42,6 +42,8 @@ export default function BlogPostsPage(
 
 export const getStaticProps = async () => {
   const allPosts = getAllPosts(["title", "slug", "publishedAt", "summary"]);
+  allPosts.sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
+
   return {
     props: {
       allPosts,

@@ -48,7 +48,7 @@ export default function Layout(
         <meta name="twitter:image" content={image} />
       </Head>
 
-      <section className={`mx-auto max-w-2xl px-2 ${props.className ?? ""}`}>
+      <section className={`mx-auto max-w-3xl px-2 ${props.className ?? ""}`}>
         {props.children}
       </section>
     </>
