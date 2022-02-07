@@ -8,7 +8,6 @@ function today() {
 }
 
 module.exports = function (plop) {
-  // create your generators here
   plop.setGenerator("til", {
     description: "Create a TIL file",
     prompts: [
@@ -23,6 +22,28 @@ module.exports = function (plop) {
         type: "add",
         path: "data/til/{{date}}-{{dashCase name}}.md",
         templateFile: "plop-templates/til.hbs",
+        data: {
+          date: today(),
+          name: "override here",
+        },
+      },
+    ],
+  });
+
+  plop.setGenerator("post", {
+    description: "Create a blog post file",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Title please",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "data/posts/{{date}}-{{dashCase name}}.md",
+        templateFile: "plop-templates/post.hbs",
         data: {
           date: today(),
           name: "override here",

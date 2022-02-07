@@ -10,6 +10,6 @@ body,
 
 code[class*="language-"],
 pre[class*="language-"] {
-  white-space: normal !important;
-  word-break: break-word !important;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

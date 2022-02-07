@@ -1,8 +1,9 @@
+import rehypePrism from "rehype-prism-plus";
+import rehypeStringify from "rehype-stringify";
 import { remark } from "remark";
-import html from "remark-html";
 import readingTime from "remark-reading-time";
+import remarkRehype from "remark-rehype";
 import visit from "unist-util-visit";
-import prism from "remark-prism";
 
 function fixRelativeImages(options: any) {
   function visitor(node: any) {
@@ -24,14 +25,13 @@ function fixRelativeImages(options: any) {
 }
 
 export async function markdownToHtml(markdown: string) {
+  // @ts-ignore
   const result = await remark()
-    .use(fixRelativeImages, { absolutePath: "http://localhost:3000/blog/" })
-    // @ts-ignore
-    .use(html as unknown as any, {
-      sanitize: false,
-    })
-    .use(prism as unknown as any)
-    .use(readingTime as unknown as any)
+    // .use(fixRelativeImages, { absolutePath: "http://localhost:3000/blog/" })
+    .use(remarkRehype)
+    .use(rehypePrism)
+    .use(rehypeStringify)
+    .use(readingTime)
     .process(markdown);
 
   return {
