@@ -5,7 +5,7 @@ summary: "Use HTML/CSS to design static images and render them with Puppeteer"
 tags: html, css
 ---
 
-When oasting a link to social media, a small preview of the link will be shown as seen on the image below. Ensuring that the preview contains relevant information for the linked page adds a little flair. And for blog posts, it would be nice if it shows information about the blog post itself.
+When posting a link to social media, a small preview of the link will be shown as seen on the image below. Ensuring that the preview contains relevant information for the linked page adds a little flair. And for blog posts, it would be nice if it shows information about the blog post itself.
 
 The content of that preview can be controlled using the [Open Graph protocol](https://ogp.me/) with addition of site-specific properties. Filling title and description is straightforward from a blog post, but having a nice image is slightly trickier and requires creating one in an image editor.
 
