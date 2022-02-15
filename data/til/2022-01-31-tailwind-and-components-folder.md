@@ -1,6 +1,7 @@
 ---
 title: "Tailwind and components folder"
 publishedAt: "2022-01-31"
+summary: "Don't forget to put all folders with React classes into tailwind.config.js"
 ---
 
 I was curious to see that classes in my components had zero effect, especially with dark mode. After digging a bit, it was a misconfiguration issue.

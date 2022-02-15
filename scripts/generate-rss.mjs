@@ -9,6 +9,7 @@ import remarkRehype from "remark-rehype";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import visit from "unist-util-visit";
 
 export function getPostSlugs(folder) {
   const postsDirectory = join(process.cwd(), "data", folder);
@@ -55,8 +56,38 @@ export function getAllPosts(fields = [], folder = "posts") {
   return posts;
 }
 
+function fixRelativeImages(options) {
+  function imageVisitor(node) {
+    // Sanitize URL by removing leading `/`
+    const relativeUrl = node.url.replace(/^\//, "");
+
+    node.url = new URL(relativeUrl, options.imagesAbsolutePath).href;
+  }
+  function linkVisitor(node) {
+    // Sanitize URL by removing leading `/`
+    const relativeUrl = node.url.replace(/^\//, "");
+
+    node.url = new URL(relativeUrl, options.absolutePath).href;
+  }
+
+  function transform(tree) {
+    if (options && options.absolutePath) {
+      visit(tree, "image", imageVisitor);
+      visit(tree, "link", linkVisitor);
+    } else {
+      throw Error("Missing required `absolutePath` option.");
+    }
+  }
+
+  return transform;
+}
+
 async function markdownToHtml(markdown) {
   const result = await remark()
+    .use(fixRelativeImages, {
+      absolutePath: "https://tpetrina.com/",
+      imagesAbsolutePath: "https://tpetrina.com/blog/",
+    })
     .use(remarkRehype)
     .use(rehypePrism)
     .use(rehypeStringify)
@@ -85,28 +116,26 @@ const feed = new Feed({
   updated: new Date(), // optional, default = today
   generator: "Feed for Node.js", // optional, default = 'Feed for Node.js'
   feedLinks: {
+    rss: "https://tpetrina.com/rss.xml",
     json: "https://tpetrina.com/json",
     atom: "https://tpetrina.com/atom",
   },
   author: toni,
 });
 
-const posts = getAllPosts([
-  "title",
-  "slug",
-  "publishedAt",
-  "summary",
-  "content",
-]).map((post) => ({
-  title: post.title,
-  url: `https://tpetrina.com/blog/${post.slug}`,
-  description: post.summary,
-  content: post.content,
-  date: parseDate(post.publishedAt),
-  image: undefined,
-}));
+async function addPosts(folder) {
+  const posts = getAllPosts(
+    ["title", "slug", "publishedAt", "summary", "content"],
+    folder
+  ).map((post) => ({
+    title: post.title,
+    url: `https://tpetrina.com/${folder}/${post.slug}`,
+    description: post.summary,
+    content: post.content,
+    date: parseDate(post.publishedAt),
+    image: undefined,
+  }));
 
-async function addPosts() {
   for (let i = 0; i < posts.length; ++i) {
     const post = posts[i];
     const html = await markdownToHtml(post.content);
@@ -124,7 +153,8 @@ async function addPosts() {
   }
 }
 
-await addPosts();
+await addPosts("posts", "blog");
+await addPosts("til", "til");
 
 // Output: RSS 2.0
 writeFileSync("public/rss.xml", feed.rss2());
