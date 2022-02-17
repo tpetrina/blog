@@ -12,7 +12,8 @@
     "build:sitemap": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/generate-sitemap.mjs",
     "build:screenshots": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/update-screenshots.mjs",
     "build:banner": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/update-banner.mjs",
-    "postbuild": "yarn build:sitemap && yarn build:rss",
+    "build:copy-images": "NODE_OPTIONS='--experimental-json-modules' && node ./scripts/copy-images.mjs",
+    "postbuild": "yarn build:sitemap && yarn build:rss yarn build:copy-images",
     "plop": "plop",
     "help": "cat HELP.md"
   },
