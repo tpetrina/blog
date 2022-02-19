@@ -9,7 +9,7 @@ Xamarin Studio 6 is here and it broke [some](https://forums.xamarin.com/discussi
 > System.Net.WebException: Error: TrustFailure (CertificateUnknown) ---> Mono.Security.Interface.TlsException: CertificateUnknown
 >   at Security.Tls.MobileAuthenticatedStream.ProcessAuthentication (System.Net.LazyAsyncResult lazyResult) [0x00077] in /Users/builder/data/lanes/3339/39ebb778/source/maccore/src/Security/Tls/MobileAuthenticatedStream.cs:206
 
-![iOS Build settings](./2016-06-14_settings.png)
+![iOS Build settings](2016-06-14_settings.png)
 
 To fix this, go to iOS project settings and change the SSL/TLS implementation from Apple TLS (default) to Mono (TLS v1.0) as seen on the image below.
 

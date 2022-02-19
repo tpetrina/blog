@@ -8,7 +8,7 @@ When creating a new Xamarin.Forms blank app. the default template creates a code
 
 Once you project is created, delete the `App.cs` file in the PCL project and go through the Add New Item wizard and add new Forms Xaml Page with the name App.
 
-![Adding new item](./20160311_AddNewItem.png)
+![Adding new item](20160311_AddNewItem.png)
 
 This will create a new page and we need to fix it a bit first. After creation, the page `App.xaml` file contains the following:
 
