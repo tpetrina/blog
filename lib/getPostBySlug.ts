@@ -96,7 +96,7 @@ function getSlugForFile(path: string): string {
     }
   }
 
-  return name;
+  return name.replace(".md", "");
 }
 
 export function getAllPosts(fields: string[] = [], folder: string = "posts") {
