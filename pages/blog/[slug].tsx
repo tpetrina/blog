@@ -28,7 +28,7 @@ export default function BlogPostPage(props: Props) {
     <Layout title={`${post.title}`} description={post.summary}>
       <Navigation />
 
-      <article className="px-4">
+      <article className="blog px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
         <p className="flex flex-row items-center my-4 space-x-2">
           <span className="mr-2 flex flex-row items-center">
