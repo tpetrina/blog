@@ -6,6 +6,7 @@ import CodeTheme from "../../components/code-theme";
 import Footer from "../../components/footer";
 import Layout from "../../components/layout";
 import Navigation from "../../components/navigation";
+import Tags from "../../components/tags";
 import { getAllPosts, getPostBySlug } from "../../lib/getPostBySlug";
 import { markdownToHtml } from "../../lib/markdownToHtml";
 
@@ -40,13 +41,14 @@ export default function TodayILearnedPage(props: Props) {
               height={32}
             />
           </span>
-          <section className="flex flex-col">
+          <section className="flex flex-col space-y-1">
             Toni Petrina
             <section className="flex flex-row items-center space-x-1 text-sm text-gray-700 dark:text-gray-300">
               <span>Published on {post.publishedAt}</span>
               <span>•</span>
               <span>{props.readingTime}</span>
             </section>
+            <Tags tags={props.post.tags} />
           </section>
         </p>
 
@@ -87,6 +89,7 @@ export async function getStaticProps({ params }: Params) {
       "ogImage",
       "coverImage",
       "publishedAt",
+      "tags",
     ],
     "til"
   );
