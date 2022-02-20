@@ -2,7 +2,6 @@
 title: "Building simple Razor Page live reload functionality"
 publishedAt: "2019-02-12"
 tags: ["ASP.NET Core", "Razor Pages", "SignalR"]
-ast: true
 ---
 
 Writing Razor Pages in ASP.NET Core is easy, fast and fun. To really add to the productivity we want to have hot reload - a staple of Single Page Application frameworks like React or Vue. Let's see it in action.
