@@ -114,13 +114,14 @@ const feed = new Feed({
   favicon: "http://tpetrina.com/favicon.ico",
   copyright: "All rights reserved 2022, Toni Petrina",
   updated: new Date(), // optional, default = today
-  generator: "Feed for Node.js", // optional, default = 'Feed for Node.js'
+  generator: "Toni Petrina RSS Feed", // optional, default = 'Feed for Node.js'
   feedLinks: {
     rss: "https://tpetrina.com/rss.xml",
     json: "https://tpetrina.com/json",
     atom: "https://tpetrina.com/atom",
   },
   author: toni,
+  ttl: 3600,
 });
 
 async function addPosts(folder) {
