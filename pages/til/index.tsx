@@ -1,5 +1,6 @@
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
+import Footer from "../../components/footer";
 import { H1 } from "../../components/heading";
 import Layout from "../../components/layout";
 import Navigation from "../../components/navigation";
@@ -43,6 +44,8 @@ export default function TodayILearnedPage(
           ))}
         </ul>
       </main>
+
+      <Footer />
     </Layout>
   );
 }
