@@ -22,3 +22,13 @@ jobs:
           --data '{
             "body": "Deployment has failed."
             }'
+
+  slack-notification:
+    name: Send a Slack Webhook when deployment status changes
+
+    steps:
+      - name: Send Slack notification - success
+        run: |
+          curl -X POST \
+          --data-urlencode "payload={\"channel\": \"#notifications\", \"username\": \"webhookbot\", \"text\": \"This is posted to #notifications and comes from a bot named webhookbot.\", \"icon_emoji\": \":robot_face:\"}" \
+          https://hooks.slack.com/services/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
