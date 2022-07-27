@@ -3,7 +3,7 @@
 # https://vercel.com/support/articles/how-do-i-get-notified-when-my-vercel-deployment-fails
 ################################################################################
 
-name: Deployment Failure notification
+name: Deployment change notification
 on: [deployment_status]
 
 jobs:
