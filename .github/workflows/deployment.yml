@@ -25,6 +25,7 @@ jobs:
 
   slack-notification:
     name: Send a Slack Webhook when deployment status changes
+    runs-on: ubuntu-latest
 
     steps:
       - name: Send Slack notification - success
