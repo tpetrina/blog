@@ -26,7 +26,11 @@ export default function BlogPostPage(props: Props) {
   const html = post.content;
 
   return (
-    <Layout title={`${post.title}`} description={post.summary}>
+    <Layout
+      title={`${post.title}`}
+      description={post.summary}
+      image={post.image}
+    >
       <Navigation />
 
       <article className="blog px-4">

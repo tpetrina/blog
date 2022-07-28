@@ -1,9 +1,21 @@
 import captureWebsite from "capture-website";
+import { getAllPosts } from "./utils.mjs";
 
-async function foo() {
-  console.log("starting...");
-  await captureWebsite.file("https://tpetrina.com", "screenshot.png");
-  console.log("done!");
+const posts = getAllPosts(["slug"]);
+
+async function generateImage(slug) {
+  const url = `http://localhost:3000/blog/preview/${slug}`;
+  const fileName = `public/static/images/${slug}.png`;
+
+  await captureWebsite.file(url, fileName, {
+    overwrite: true,
+    width: 1200,
+    height: 630,
+    styles: [
+      `body {
+    }`,
+    ],
+  });
 }
 
-foo();
+posts.forEach((post) => generateImage(post.slug));

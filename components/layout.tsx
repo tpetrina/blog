@@ -14,6 +14,7 @@ export type MetaProps = {
 };
 
 const default_image = `https://tpetrina.com/static/images/banner.png`;
+
 export default function Layout(
   props: React.PropsWithChildren<LayoutProps & MetaProps>
 ) {
@@ -25,6 +26,7 @@ export default function Layout(
     image = default_image,
   } = props;
   const url = `https://tpetrina.com${router.asPath}`;
+  console.log({ router });
 
   return (
     <>
