@@ -49,6 +49,14 @@ export function getPostByPath(
     }
   });
 
+  if (!items["image"]) {
+    const imagePath =
+      join(process.cwd(), "public", "static", "images", realSlug) + ".png";
+    console.log(`looking for ${imagePath}`);
+    if (fs.existsSync(imagePath))
+      items["image"] = join("static", "images", realSlug) + ".png";
+  }
+
   return items;
 }
 
