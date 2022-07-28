@@ -31,7 +31,5 @@ export default function cn(...classes: Parameter[]): string | undefined {
     }
   }
 
-  console.log({ parts, seen });
-
   return parts.join(" ");
 }

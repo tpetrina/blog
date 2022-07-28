@@ -54,8 +54,7 @@ export function getPostByPath(
       join(process.cwd(), "public", "static", "images", realSlug) + ".png";
     console.log(`looking for ${imagePath}`);
     if (fs.existsSync(imagePath))
-      items["image"] =
-        "https://tpetrina.com/" + join("static", "images", realSlug) + ".png";
+      items["image"] = "/" + join("static", "images", realSlug) + ".png";
   }
 
   return items;
