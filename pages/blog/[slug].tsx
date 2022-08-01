@@ -69,6 +69,8 @@ export default function BlogPostPage(props: Props) {
           <span>Change code theme:</span> <CodeTheme />
         </section>
       </section>
+      
+      <section className="giscus" />
 
       <Footer />
     </Layout>
