@@ -3,7 +3,7 @@ import rehypeStringify from "rehype-stringify";
 import { remark } from "remark";
 import readingTime from "remark-reading-time";
 import remarkRehype from "remark-rehype";
-import visit from "unist-util-visit";
+import { visit } from "unist-util-visit";
 
 function fixRelativeImages(options: any) {
   function visitor(node: any) {

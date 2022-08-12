@@ -6,7 +6,7 @@ import rehypeStringify from "rehype-stringify";
 import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 
-import visit from "unist-util-visit";
+import { visit } from "unist-util-visit";
 import { getAllPosts } from "./utils.mjs";
 
 function fixRelativeImages(options) {

@@ -26,7 +26,6 @@ export default function Layout(
     image = default_image,
   } = props;
   const url = `https://tpetrina.com${router.asPath}`;
-  console.log({ router });
 
   return (
     <>

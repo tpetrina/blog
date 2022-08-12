@@ -1,6 +1,13 @@
-import Giscus from "@giscus/react";
+import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
+
+const Giscus = dynamic(() => import("@giscus/react"), {
+  suspense: true,
+  ssr: false,
+});
 
 export default function GiscusComments() {
+  const { theme } = useTheme();
   return (
     <>
       <section className="giscus" />
@@ -15,7 +22,7 @@ export default function GiscusComments() {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="preferred_color_scheme"
+        theme={theme}
         lang="en"
         loading="eager"
       />

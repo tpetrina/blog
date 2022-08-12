@@ -58,7 +58,7 @@ export default function Videos() {
         }
 
         return (
-          <li className="mr-4 mb-4 w-full">
+          <li className="mr-4 mb-4 w-full" key={video.url}>
             <section className="flex flex-col-reverse sm:flex-row w-full sm:space-x-4">
               <YoutubeVideo src={video.url.replace("watch?v=", "embed/")} />
               <section className="flex flex-col">

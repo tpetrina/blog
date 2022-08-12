@@ -7,7 +7,7 @@ import Footer from "../../components/footer";
 import GiscusComments from "../../components/giscus";
 import Layout from "../../components/layout";
 import Navigation from "../../components/navigation";
-import Tags from "../../components/tags";
+import WriterInfo from "../../components/writer-info";
 import { getAllPosts, getPostBySlug } from "../../lib/getPostBySlug";
 import { markdownToHtml } from "../../lib/markdownToHtml";
 
@@ -36,26 +36,10 @@ export default function BlogPostPage(props: Props) {
 
       <article className="blog px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
-        <p className="flex flex-row items-center my-4 space-x-2">
-          <span className="mr-2 flex flex-row items-center">
-            <img
-              className="rounded-full"
-              src="/me.png"
-              alt="Profile picture"
-              width={32}
-              height={32}
-            />
-          </span>
-          <section className="flex flex-col space-y-1">
-            Toni Petrina
-            <section className="flex flex-row items-center space-x-1 text-sm text-gray-700 dark:text-gray-300">
-              <span>Published on {post.publishedAt}</span>
-              <span>•</span>
-              <span>{props.readingTime}</span>
-            </section>
-            <Tags tags={props.post.tags} />
-          </section>
-        </p>
+
+        <section className="my-4 ">
+          <WriterInfo post={post} readingTime={props.readingTime} />
+        </section>
 
         <div
           className="prose dark:prose-dark max-w-none"

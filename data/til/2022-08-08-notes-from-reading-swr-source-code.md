@@ -1,7 +1,7 @@
 ---
 title: "Notes from reading swr source code"
 publishedAt: "2022-08-08"
-description: "Reading source code from battle tested open source projects leads to learning fun concepts and utilities"
+summary: "Reading source code from battle tested open source projects leads to learning fun concepts and utilities"
 ---
 
 Source code at [GitHub vercel/swr](https://github.com/vercel/swr).
