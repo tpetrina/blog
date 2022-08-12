@@ -21,7 +21,7 @@ export default function Presentations() {
   return (
     <ul className="list-disc ml-4">
       {presentations.map((presentation) => (
-        <li>
+        <li key={presentation.url}>
           <a href={presentation.url}>{presentation.title}</a>
         </li>
       ))}
