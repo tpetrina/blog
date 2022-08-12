@@ -52,7 +52,7 @@ export function getPostByPath(
   if (!items["image"]) {
     const imagePath =
       join(process.cwd(), "public", "static", "images", realSlug) + ".png";
-    console.log(`looking for ${imagePath}`);
+    // console.log(`looking for ${imagePath}`);
     if (fs.existsSync(imagePath))
       items["image"] = "/" + join("static", "images", realSlug) + ".png";
   }
@@ -109,7 +109,7 @@ function getSlugForFile(path: string): string {
 
 export function getAllPosts(fields: string[] = [], folder: string = "posts") {
   const slugs = getSlugsAndPaths(folder);
-  console.log(slugs);
+  // console.log(slugs);
 
   const posts = slugs
     .filter((slug) => slug.path.endsWith("md"))
@@ -125,7 +125,7 @@ export function getAllPosts(fields: string[] = [], folder: string = "posts") {
     });
   }
 
-  console.log(posts);
+  // console.log(posts);
 
   return posts;
 }

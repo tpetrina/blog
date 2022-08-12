@@ -1,4 +1,9 @@
-import Giscus from "@giscus/react";
+import dynamic from "next/dynamic";
+
+const Giscus = dynamic(() => import("@giscus/react"), {
+  suspense: true,
+  ssr: false,
+});
 
 export default function GiscusComments() {
   return (
