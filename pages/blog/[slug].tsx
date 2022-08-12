@@ -4,6 +4,7 @@ import React from "react";
 
 import CodeTheme from "../../components/code-theme";
 import Footer from "../../components/footer";
+import GiscusComments from "../../components/giscus";
 import Layout from "../../components/layout";
 import Navigation from "../../components/navigation";
 import Tags from "../../components/tags";
@@ -69,6 +70,8 @@ export default function BlogPostPage(props: Props) {
           <span>Change code theme:</span> <CodeTheme />
         </section>
       </section>
+
+      <GiscusComments />
 
       <Footer />
     </Layout>
