@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Layout from "../../components/layout";
 
-export default function () {
+export default function AdminPage() {
   return (
     <Layout>
       <h1 className="text-3xl">Admin</h1>
