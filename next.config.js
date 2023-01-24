@@ -2,6 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "mdx"],
+  productionBrowserSourceMaps: true,
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       // Replace React with Preact only in client production build
