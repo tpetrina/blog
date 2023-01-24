@@ -22,23 +22,24 @@ export default function BlogPostsPage(
         <ul className="space-y-8">
           {(props.allPosts || []).map((post) => (
             <li key={post.slug}>
-              <Link href={`/blog/${post.slug}`}>
-                <a className="w-full flex flex-col">
-                  <section className="flex flex-col sm:flex-row w-full">
-                    <h3 className="text-xl w-full">{post.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 right mb-2">
-                      {post.publishedAt}
-                    </p>
-                  </section>
-                  <p>{post.summary}</p>
-                </a>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="w-full flex flex-col"
+              >
+                <section className="flex flex-col sm:flex-row w-full">
+                  <h3 className="text-xl w-full">{post.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 right mb-2">
+                    {post.publishedAt}
+                  </p>
+                </section>
+                <p>{post.summary}</p>
               </Link>
             </li>
           ))}
         </ul>
       </main>
 
-      <Footer/>
+      <Footer />
     </Layout>
   );
 }

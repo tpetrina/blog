@@ -23,7 +23,7 @@ export default function ActiveLink(
         router.asPath === rest.href ? activeClassName : ""
       }`}
     >
-      <Link {...props} />
+      <Link {...rest} />
     </Component>
   );
 }
