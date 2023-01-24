@@ -16,6 +16,7 @@ export const authOptions = {
         username: { label: "Username", type: "text", placeholder: "tpetrina" },
         password: { label: "Password", type: "password" },
       },
+      // @ts-ignore
       async authorize(credentials, req) {
         console.log("Logging in with credentials...");
 
