@@ -47,6 +47,9 @@ export default function Layout(
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+
+        {/* LinkedIn */}
+        <meta name="author" content="Toni Petrina" />
       </Head>
 
       <section className={`mx-auto max-w-3xl px-2 ${props.className ?? ""}`}>
