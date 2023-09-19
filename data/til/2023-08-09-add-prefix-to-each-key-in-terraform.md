@@ -2,6 +2,7 @@
 title: "Add prefix to each key in Terraform"
 publishedAt: "2023-08-09"
 tags: ["terraform"]
+summary: "Simple way to add a prefix to each key when iterating over a collection"
 ---
 
 Secrets in Hashicorp Vault are not prefixed while the app expects them prefixed.

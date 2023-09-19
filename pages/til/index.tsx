@@ -18,7 +18,7 @@ export default function TodayILearnedPage(
 
         <section className="h-[20px]" />
 
-        <p className="py-4 text-gray-800 dark:text-gray-200">
+        <p className="py-4 text-gray-800 dark:text-gray-200 px-2 italic">
           A collection of daily a-ha moments. Sometimes to just copy/paste,
           sometimes to remember what do avoid, other times a handy reminder how
           difficult learning all these technologies can be.
