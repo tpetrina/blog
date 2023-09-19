@@ -13,7 +13,7 @@ export default function BannerPage() {
         />
         <p className="text-7xl">Toni Petrina</p>
         <p className="text-3xl">
-          Site Reliability Engineer @ Visma e-conomic a/s
+          Lead Site Reliability Engineer @ Visma e-conomic a/s
         </p>
       </section>
     </main>
