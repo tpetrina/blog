@@ -35,9 +35,9 @@ const Home: NextPage = () => {
 
             <h3 className="mt-4 mb-2 text-xl">What else do I do?</h3>
             <p>
-              My hobbies include writing more code as a "proper" full-stack
-              engineer from database to frontend, and mobile. Check out some of
-              my projects at{" "}
+              My hobbies include writing more code as a &quot;proper&quot;
+              full-stack engineer from database to frontend, and mobile. Check
+              out some of my projects at{" "}
               <a
                 className="text-blue-400 hover:underline"
                 href="https://massivepixel.co"
