@@ -28,7 +28,11 @@ export default function TodayILearnedPage(props: Props) {
   const html = post.content;
 
   return (
-    <Layout title={`${post.title}`}>
+    <Layout
+      title={`${post.title}`}
+      description={post.summary}
+      image={post.image}
+    >
       <Navigation />
 
       <article className="px-4">
