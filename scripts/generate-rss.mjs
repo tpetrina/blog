@@ -77,13 +77,13 @@ const feed = new Feed({
   ttl: 3600,
 });
 
-async function addPosts(folder) {
+async function addPosts(folder, fragment) {
   const posts = getAllPosts(
     ["title", "slug", "publishedAt", "summary", "content"],
     folder
   ).map((post) => ({
     title: post.title,
-    url: `https://tpetrina.com/${folder}/${post.slug}`,
+    url: `https://tpetrina.com/${fragment}/${post.slug}`,
     description: post.summary,
     content: post.content,
     date: parseDate(post.publishedAt),
