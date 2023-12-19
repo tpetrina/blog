@@ -1,25 +1,35 @@
-import fs, { cpSync } from "fs";
+import { cp, lstat, readdir } from "fs/promises";
 import { join, basename, extname } from "path";
 
+/**
+ * Defines the path to the data directory, relative to the current working directory.
+ */
 const dataDir = join(process.cwd(), "data");
 
-function moveFiles(path) {
-  const result = fs.readdirSync(path);
-  result.forEach((child) => {
-    const childPath = join(path, child);
-    if (fs.lstatSync(childPath).isDirectory()) {
-      moveFiles(childPath);
-    } else {
-      const filename = basename(childPath);
-      const ext = extname(childPath);
+async function copyFiles(sourceDir) {
+  try {
+    const files = await readdir(sourceDir);
 
-      if (filename === ".DS_Store" || ext === ".md" || ext === ".mdx") {
-        return;
+    for (const file of files) {
+      const sourceFilePath = join(sourceDir, file);
+
+      if ((await lstat(sourceFilePath)).isDirectory()) {
+        await copyFiles(sourceFilePath);
+      } else {
+        const filename = basename(sourceFilePath);
+        const ext = extname(sourceFilePath);
+
+        if (filename === ".DS_Store" || ext === ".md" || ext === ".mdx") {
+          continue;
+        }
+
+        const destination = join(process.cwd(), "public", "blog", filename);
+        await cp(sourceFilePath, destination);
       }
-
-      cpSync(childPath, join(process.cwd(), "public", "blog", `${filename}`));
     }
-  });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-moveFiles(dataDir);
+await copyFiles(dataDir);
