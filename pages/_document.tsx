@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 class MyDocument extends Document {
   render() {
@@ -43,6 +44,16 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+
+          {!isDevelopment() && (
+            <Script
+              strategy="beforeInteractive"
+              defer
+              async
+              src="https://umami.massivepixel.app/script.js"
+              data-website-id="55b84d98-c01a-4e35-8d3e-08c0093fc0ba"
+            />
+          )}
         </body>
       </Html>
     );
@@ -50,3 +61,7 @@ class MyDocument extends Document {
 }
 
 export default MyDocument;
+
+export function isDevelopment() {
+  return process.env.NODE_ENV === "development";
+}
