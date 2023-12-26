@@ -36,7 +36,10 @@ export default function TodayILearnedPage(props: Props) {
       <Navigation />
 
       <article className="px-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
+        <header>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
+          <p className="border-l-[4px] border-blue-400 pl-2">{post.summary}</p>
+        </header>
 
         <section className="my-4 ">
           <WriterInfo post={post} readingTime={props.readingTime} />
@@ -82,6 +85,7 @@ export async function getStaticProps({ params }: Params) {
       "coverImage",
       "publishedAt",
       "tags",
+      "summary",
     ],
     "til"
   );

@@ -35,7 +35,10 @@ export default function BlogPostPage(props: Props) {
       <Navigation />
 
       <article className="blog px-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
+        <header>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
+          <p className="border-l-[4px] border-blue-400 pl-2">{post.summary}</p>
+        </header>
 
         <section className="my-4 ">
           <WriterInfo post={post} readingTime={props.readingTime} />
