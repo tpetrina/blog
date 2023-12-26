@@ -2,9 +2,10 @@
 title: Implementing Redux in C# (Part 1)
 publishedAt: "2016-05-24"
 tags: ["xamarin.forms", "redux", "mvvm"]
+slug: "mvvm-data-redux-2"
 ---
 
-This is the first part in the series about porting Redux to C# and using it to build MVVM based apps. In the [last](/blog/post/mvvm-data-redux) post we introduced the concept of stores as a replacement for our repositories and in this post we will see how to create such stores.
+This is the first part in the series about porting Redux to C# and using it to build MVVM based apps. In the [last](/blog/mvvm-data-redux) post we introduced the concept of stores as a replacement for our repositories and in this post we will see how to create such stores.
 
 So without further ado, let's write our simplest store ever!
 

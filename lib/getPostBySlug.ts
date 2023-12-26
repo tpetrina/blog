@@ -38,7 +38,7 @@ export function getPostByPath(
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
-      items[field] = getSlugForFile(path);
+      items[field] = getSlugForPath(path);
     }
     if (field === "content") {
       items[field] = content;
@@ -64,7 +64,7 @@ export function getSlugsAndPaths(
   folder: string
 ): { slug: string; path: string }[] {
   const postsDirectory = join(process.cwd(), "data", folder);
-  const posts: string[] = [];
+  const posts: { path: string; fullPath: string }[] = [];
 
   const folders: string[] = [postsDirectory];
   while (folders.length > 0) {
@@ -77,21 +77,42 @@ export function getSlugsAndPaths(
         folders.push(childPath);
       } else {
         if (childPath.endsWith(".md")) {
-          posts.push(childPath.replace(postsDirectory, ""));
+          posts.push({
+            path: childPath.replace(postsDirectory, ""),
+            fullPath: childPath,
+          });
         }
       }
     });
   }
 
-  return posts.map((file) => {
+  return posts.map(({ path, fullPath }) => {
     return {
-      slug: getSlugForFile(file),
-      path: file,
+      slug: getSlugForFile(fullPath),
+      path: path,
     };
   });
 }
 
-function getSlugForFile(path: string): string {
+/**
+ * Gets the slug for the given file path.
+ *
+ * First tries to get the slug from the post metadata by calling getPostByRealPath().
+ * If that doesn't return a slug, falls back to getting the slug from the file path using getSlugForPath().
+ *
+ * @param fullPath - The full file path of the post file.
+ * @returns The post slug for the given file.
+ */
+function getSlugForFile(fullPath: string) {
+  const items = getPostByRealPath(fullPath, ["slug"]);
+  if (!!items["slug"]) {
+    return items["slug"];
+  }
+
+  return getSlugForPath(fullPath);
+}
+
+function getSlugForPath(path: string): string {
   const realSlug = path.replace(/\.md$/, "");
   const name = basename(path);
 
@@ -125,7 +146,43 @@ export function getAllPosts(fields: string[] = [], folder: string = "posts") {
     });
   }
 
-  // console.log(posts);
-
   return posts;
+}
+
+export function getPostByRealPath(fullPath: string, fields: string[]) {
+  const realSlug = basename(fullPath).replace(/\.md$/, "");
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  type Items = {
+    [key: string]: string;
+  };
+
+  const items: Items = {};
+
+  // Ensure only the minimal needed data is exposed
+  fields.forEach((field) => {
+    if (field === "content") {
+      items[field] = content;
+    }
+
+    if (typeof data[field] !== "undefined") {
+      items[field] = data[field];
+    } else {
+      // Special fields that always exist
+      if (field === "slug") {
+        items[field] = getSlugForPath(fullPath);
+      }
+    }
+  });
+
+  if (!items["image"]) {
+    const imagePath =
+      join(process.cwd(), "public", "static", "images", realSlug) + ".png";
+    // console.log(`looking for ${imagePath}`);
+    if (fs.existsSync(imagePath))
+      items["image"] = "/" + join("static", "images", realSlug) + ".png";
+  }
+
+  return items;
 }

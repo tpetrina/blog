@@ -77,21 +77,18 @@ const feed = new Feed({
   ttl: 3600,
 });
 
-async function addPosts(folder, fragment) {
-  const posts = getAllPosts(
-    ["title", "slug", "publishedAt", "summary", "content"],
-    folder
-  ).map((post) => ({
+async function addPosts(posts) {
+  const mapped = posts.map((post) => ({
     title: post.title,
-    url: `https://tpetrina.com/${fragment}/${post.slug}`,
+    url: `https://tpetrina.com/${post.fragment}/${post.slug}`,
     description: post.summary,
     content: post.content,
     date: parseDate(post.publishedAt),
     image: undefined,
   }));
 
-  for (let i = 0; i < posts.length; ++i) {
-    const post = posts[i];
+  for (let i = 0; i < mapped.length; ++i) {
+    const post = mapped[i];
     const html = await markdownToHtml(post.content);
     feed.addItem({
       title: post.title,
@@ -107,8 +104,27 @@ async function addPosts(folder, fragment) {
   }
 }
 
-await addPosts("posts", "blog");
-await addPosts("til", "til");
+const posts = [
+  ...(
+    await getAllPosts(
+      ["title", "slug", "publishedAt", "summary", "content"],
+      "posts"
+    )
+  ).map((p) => ({ ...p, fragment: "blog" })),
+  ...(
+    await getAllPosts(
+      ["title", "slug", "publishedAt", "summary", "content"],
+      "til"
+    )
+  ).map((p) => ({ ...p, fragment: "til" })),
+];
+posts.sort((l, r) =>
+  l.publishedAt < r.publishedAt ? 1 : l.publishedAt > r.publishedAt ? -1 : 0
+);
+
+// await addPosts("posts", "blog");
+// await addPosts("til", "til");
+await addPosts(posts);
 
 // Output: RSS 2.0
 writeFileSync("public/rss.xml", feed.rss2());

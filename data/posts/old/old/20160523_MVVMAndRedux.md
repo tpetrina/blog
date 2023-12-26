@@ -2,6 +2,7 @@
 title: MVVM, data stores and Redux
 publishedAt: "2016-05-23"
 tags: ["xamarin.forms", "redux", "mvvm"]
+slug: "mvvm-data-redux"
 ---
 
 MVVM (Model-View-ViewModel) is the default pattern for most XAML based apps. It forces separating all code used for one screen into separate parts. View is the UI part (XAML or coded) while the model is usually raw data retrieved from database, web service or constructed on the fly. Model is usually too raw to display in the UI and shouldn't contain any business logic. It is also supposed to be a simple POCO (Plain Old C# Object) class, although some logic can be added to it.
