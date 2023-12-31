@@ -20,7 +20,7 @@ function generateSitemap(posts: any[]) {
         .map(
           (page) => `
       <url>
-        <loc>${`${ROOT_URL}${page.slug}`}</loc>
+        <loc>${`${ROOT_URL}${page.prefix}/${page.slug}`}</loc>
         <lastmod>${page.publishedAt}</lastmod>
       </url>`
         )
@@ -35,10 +35,17 @@ function SiteMap() {
 
 export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   // We generate the XML sitemap with all examples
-  const posts = [
-    ...(await getAllPosts(["publishedAt", "slug"])),
-    ...(await getAllPosts(["publishedAt", "slug"], "til")),
+  const posts: any[] = [
+    ...(await getAllPosts(["publishedAt", "slug"], "posts").map((post) => ({
+      ...post,
+      prefix: "blog",
+    }))),
+    ...(await getAllPosts(["publishedAt", "slug"], "til").map((post) => ({
+      ...post,
+      prefix: "til",
+    }))),
   ];
+  console.log(posts);
   posts.sort((l, r) =>
     l.publishedAt < r.publishedAt ? 1 : l.publishedAt > r.publishedAt ? -1 : 0
   );
