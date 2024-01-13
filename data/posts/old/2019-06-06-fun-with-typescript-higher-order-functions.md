@@ -2,6 +2,7 @@
 title: "Fun with Typescript and Higher Order Functions"
 publishedAt: "2019-06-06"
 tags: ["typescript", "functional programming"]
+summary: "Typing higher order functions in Typescript is fun"
 ast: false
 ---
 
