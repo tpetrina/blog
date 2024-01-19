@@ -11,9 +11,9 @@ export default function BlogPostPreviewPage(props: Props) {
   const { post } = props;
 
   return (
-    <main className="flex flex-row w-full h-full bg-gray-50 text-gray-800 items-center px-20 py-12">
-      <section className="flex flex-row w-full">
-        <section className="space-y-8">
+    <main className="preview flex flex-row w-full h-full items-center px-20 py-12">
+      <section className="flex flex-row w-full h-full">
+        <section className="space-y-8 self-center">
           <h1 className="text-5xl">{post.title}</h1>
 
           <section className="flex flex-col space-y-2">
@@ -21,13 +21,14 @@ export default function BlogPostPreviewPage(props: Props) {
             <Tags tags={props.post.tags} className="text-xl" />
           </section>
         </section>
-        <section className="ml-auto">
+
+        <section className="ml-auto self-start">
           <img
-            className="rounded-full shadow-2xl"
+            className="rounded-full shadow-md shadow-black border-cyan-400 border-2"
             src="/me.png"
             alt="Profile picture"
-            width={150}
-            height={150}
+            width={160}
+            height={160}
           />
         </section>
       </section>

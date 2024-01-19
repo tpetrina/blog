@@ -12,7 +12,7 @@ export default function Tags({
   return (
     <ul
       className={cn(
-        "flex flex-row items-center space-x-2 text-xs font-mono text-gray-500",
+        "tags flex flex-row items-center space-x-2 text-xs font-mono",
         className
       )}
     >
