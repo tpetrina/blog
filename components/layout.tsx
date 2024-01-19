@@ -38,7 +38,7 @@ export default function Layout(
         <meta property="og:type" content={type} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={fixImageUrl(image)} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:domain" content="tpetrina.com" />
@@ -46,7 +46,7 @@ export default function Layout(
         <meta name="twitter:url" content={url} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
+        <meta name="twitter:image" content={fixImageUrl(image)} />
 
         {/* LinkedIn */}
         <meta name="author" content="Toni Petrina" />
@@ -57,4 +57,14 @@ export default function Layout(
       </section>
     </>
   );
+}
+
+function fixImageUrl(url: string) {
+  if (url.startsWith("https://tpetrina.com")) return url;
+
+  if (url.startsWith("/")) {
+    return "https://tpetrina.com" + url;
+  }
+
+  return "https://tpetrina.com" + "/" + url;
 }
