@@ -1,8 +1,11 @@
 // const withPreact = require("next-plugin-preact");
+const withMarkdoc = require("@markdoc/next.js");
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ["ts", "tsx", "mdx"],
+  pageExtensions: ["md", "mdx", "mdoc", "js", "jsx", "ts", "tsx"],
   productionBrowserSourceMaps: true,
 };
+
+module.exports = withMarkdoc(/* options */)(nextConfig);

@@ -1,12 +1,13 @@
-import Link, { LinkProps } from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
+import Link, { LinkProps } from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 
 export default function ActiveLink(
   props: React.PropsWithChildren<LinkProps> & {
     wrapper: React.ElementType;
     className?: string;
     activeClassName: string;
+    title?: string;
   }
 ) {
   const router = useRouter();

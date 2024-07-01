@@ -7,7 +7,7 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 
 import { visit } from "unist-util-visit";
-import { getAllPosts } from "./utils.mjs";
+import { getAllPosts, getAllKbArticles } from "./utils.mjs";
 
 function fixRelativeImages(options) {
   function imageVisitor(node) {
@@ -60,12 +60,12 @@ const toni = {
 const feed = new Feed({
   title: "Toni Petrina's digital garden",
   description: "Something, something, code!",
-  id: "http://tpetrina.com/",
-  link: "http://tpetrina.com/",
+  id: "https://tpetrina.com/",
+  link: "https://tpetrina.com/",
   language: "en", // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
   //   image: "http://tpetrina.com/image.png",
-  favicon: "http://tpetrina.com/favicon.ico",
-  copyright: "All rights reserved 2022, Toni Petrina",
+  favicon: "https://tpetrina.com/favicon.ico",
+  copyright: "All rights reserved 2024, Toni Petrina",
   updated: new Date(), // optional, default = today
   generator: "Toni Petrina RSS Feed", // optional, default = 'Feed for Node.js'
   feedLinks: {
@@ -117,6 +117,13 @@ const posts = [
       "til"
     )
   ).map((p) => ({ ...p, fragment: "til" })),
+  // Not sure about KB just yet
+  // ...(await getAllKbArticles()).map((kb) => ({
+  //   ...kb,
+  //   publishedAt: kb.publishedAt || kb.modifiedOn.toISOString(),
+  //   slug: kb.slug.substring(1),
+  //   fragment: "kb",
+  // })),
 ];
 posts.sort((l, r) =>
   l.publishedAt < r.publishedAt ? 1 : l.publishedAt > r.publishedAt ? -1 : 0

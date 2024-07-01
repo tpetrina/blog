@@ -27,8 +27,18 @@ export default function Navigation() {
           activeClassName="font-bold"
           className="hover:underline underline-offset-4"
           href="/til"
+          title="Today I've learned"
         >
           TIL
+        </ActiveLink>
+        <ActiveLink
+          wrapper="li"
+          activeClassName="font-bold"
+          className="hover:underline underline-offset-4"
+          href="/kb"
+          title="Knowledge base"
+        >
+          KB
         </ActiveLink>
 
         <ActiveLink

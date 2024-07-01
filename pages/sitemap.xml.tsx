@@ -1,9 +1,15 @@
 import { GetServerSidePropsContext } from "next";
 import { getAllPosts } from "../lib/getPostBySlug";
+import { getAllKbFiles } from "../lib/getKbArticles";
 
 const ROOT_URL = "https://tpetrina.com/";
 
-function generateSitemap(posts: any[]) {
+function generateSitemap(
+  posts: {
+    publishedAt: string;
+    path: string;
+  }[]
+) {
   const pages: string[] = ["", "presentations", "blog", "til"];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -20,7 +26,7 @@ function generateSitemap(posts: any[]) {
         .map(
           (page) => `
       <url>
-        <loc>${`${ROOT_URL}${page.prefix}/${page.slug}`}</loc>
+        <loc>${`${ROOT_URL}${page.path}`}</loc>
         <lastmod>${page.publishedAt}</lastmod>
       </url>`
         )
@@ -35,17 +41,25 @@ function SiteMap() {
 
 export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   // We generate the XML sitemap with all examples
-  const posts: any[] = [
-    ...(await getAllPosts(["publishedAt", "slug"], "posts").map((post) => ({
+  const posts: { publishedAt: string; path: string }[] = [
+    ...(await getAllPosts(["publishedAt", "slug"], "posts").map(
+      (post: any) => ({
+        ...post,
+        path: `blog/${post.slug}`,
+      })
+    )),
+    ...(await getAllPosts(["publishedAt", "slug"], "til").map((post: any) => ({
       ...post,
-      prefix: "blog",
+      path: `til/${post.slug}`,
     }))),
-    ...(await getAllPosts(["publishedAt", "slug"], "til").map((post) => ({
-      ...post,
-      prefix: "til",
-    }))),
+    ...(await getAllKbFiles()).map((file) => ({
+      publishedAt: file.modifiedOn.toISOString(),
+      path: `kb${file.relativePath}`,
+    })),
   ];
+
   console.log(posts);
+
   posts.sort((l, r) =>
     l.publishedAt < r.publishedAt ? 1 : l.publishedAt > r.publishedAt ? -1 : 0
   );

@@ -168,3 +168,55 @@ export function getPostByRealPath(fullPath, fields) {
 
   return items;
 }
+
+export function getAllKbArticles() {
+  // ["title", "slug", "publishedAt", "summary", "content"],
+  const kbFolder = join(process.cwd(), "pages", "kb");
+  const folders = [kbFolder];
+  const files = [];
+
+  while (folders.length > 0) {
+    const [path] = folders.splice(0, 1);
+    console.log("Checking", path);
+
+    fs.readdirSync(path).forEach((p) => {
+      const childPath = join(path, p);
+      console.log("Found", p);
+
+      const info = fs.lstatSync(childPath);
+      if (info.isDirectory()) {
+        folders.push(childPath);
+      } else {
+        if (childPath.endsWith(".md")) {
+          const fileContents = fs.readFileSync(childPath, "utf8");
+          const { data, content } = matter(fileContents);
+
+          const relativePath = childPath.replace(kbFolder, "");
+
+          const imagePath =
+            join(process.cwd(), "public", "static", "images", relativePath) +
+            ".png";
+          const imageExists = fs.existsSync(imagePath);
+          if (!imageExists) {
+            console.debug("Missing image", imagePath);
+          }
+
+          files.push({
+            slug: relativePath,
+            title: data.title ?? relativePath,
+            slug: relativePath,
+            publishedAt: data.publishedAt,
+            modifiedOn: info.mtime,
+            summary: data.summary,
+            content: content,
+            image: imageExists
+              ? "/" + join("static", "images", relativePath) + ".png"
+              : undefined,
+          });
+        }
+      }
+    });
+  }
+
+  return files;
+}

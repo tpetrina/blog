@@ -1,5 +1,5 @@
 import captureWebsite from "capture-website";
-import { getAllPosts } from "./utils.mjs";
+import { getAllKbArticles, getAllPosts } from "./utils.mjs";
 
 const posts = getAllPosts(["slug"]);
 const tils = getAllPosts(["slug"], "til");
@@ -21,3 +21,4 @@ async function generateImage(type, slug) {
 
 posts.forEach(({ slug }) => generateImage("blog", slug));
 tils.forEach(({ slug }) => generateImage("til", slug));
+getAllKbArticles().forEach((kb) => generateImage("kb", kb.slug));

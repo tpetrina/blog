@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 } */
+
+pre[class*="language-"] {
+  @apply shadow-md shadow-[#111] border-[1px] rounded-md border-[#111111f1];
+}
