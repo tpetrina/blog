@@ -24,34 +24,36 @@ export default function KBLayout({
       >
         <Navigation />
 
-        <header>
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">{title}</h1>
-          {summary && (
-            <p className="border-l-[4px] border-blue-400 pl-2">{summary}</p>
-          )}
-        </header>
+        <Layout.Content>
+          <header>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">{title}</h1>
+            {summary && (
+              <p className="border-l-[4px] border-blue-400 pl-2">{summary}</p>
+            )}
+          </header>
 
-        <section className="my-4 ">
-          <WriterInfo
-            post={{
-              publishedAt: rest.markdoc?.frontmatter.publishedAt ?? "",
-              tags: rest.markdoc?.frontmatter.tags ?? [],
-            }}
-            readingTime={null}
-          />
-        </section>
-
-        <main className="prose dark:prose-dark max-w-none">{children}</main>
-
-        <section className="flex flex-col p-4 space-y-2">
-          <hr className="border border-1 border-gray-300 dark:border-gray-600" />
-
-          <section className="flex flex-row items-center space-x-4">
-            <span>Change code theme:</span> <CodeTheme />
+          <section className="my-4 ">
+            <WriterInfo
+              post={{
+                publishedAt: rest.markdoc?.frontmatter.publishedAt ?? "",
+                tags: rest.markdoc?.frontmatter.tags ?? [],
+              }}
+              readingTime={null}
+            />
           </section>
-        </section>
 
-        <GiscusComments />
+          <main className="prose dark:prose-dark max-w-none">{children}</main>
+
+          <section className="flex flex-col p-4 space-y-2">
+            <hr className="border border-1 border-gray-300 dark:border-gray-600" />
+
+            <section className="flex flex-row items-center space-x-4">
+              <span>Change code theme:</span> <CodeTheme />
+            </section>
+          </section>
+
+          <GiscusComments />
+        </Layout.Content>
       </Layout>
     </>
   );

@@ -5,7 +5,7 @@
 html,
 body,
 #__next {
-  @apply h-full;
+  @apply h-full bg-surface-flat;
 }
 
 code[class*="language-"],
@@ -14,7 +14,8 @@ pre[class*="language-"] {
   word-wrap: break-word;
 }
 
-article.blog img {
+article.blog img,
+article img {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 

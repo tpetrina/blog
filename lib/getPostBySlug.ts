@@ -47,6 +47,12 @@ export function getPostByPath(
     if (typeof data[field] !== "undefined") {
       items[field] = data[field];
     }
+
+    if (field === "publishedAt") {
+      if ((items[field] as any) instanceof Date) {
+        items[field] = (items[field] as any).toISOString().split("T")[0];
+      }
+    }
   });
 
   if (!items["image"]) {
@@ -142,6 +148,13 @@ export function getAllPosts(fields: string[] = [], folder: string = "posts") {
     posts.forEach((post) => {
       if (!post.publishedAt) {
         console.log("missing publishedAt", post);
+      }
+      // if publishedAt is a Date
+      if (!!post.publishedAt && (post.publishedAt as any) instanceof Date) {
+        console.log("publishedAt is a Date");
+        post.publishedAt = (post.publishedAt as any)
+          .toISOString()
+          .split("T")[0];
       }
     });
   }

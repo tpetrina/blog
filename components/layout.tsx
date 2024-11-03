@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import { createTwc } from "react-twc";
+import cn from "../lib/cn";
 
 export type LayoutProps = {
   className?: string;
@@ -52,7 +54,9 @@ export default function Layout(
         <meta name="author" content="Toni Petrina" />
       </Head>
 
-      <section className={`mx-auto max-w-3xl px-2 ${props.className ?? ""}`}>
+      <section
+        className={`layout mx-auto max-w-4xl px-2 md:px-0 ${props.className ?? ""}`}
+      >
         {props.children}
       </section>
     </>
@@ -68,3 +72,7 @@ function fixImageUrl(url: string) {
 
   return "https://tpetrina.com" + "/" + url;
 }
+
+export const twx = createTwc({ compose: cn });
+
+Layout.Content = twx.section`pt-24`;

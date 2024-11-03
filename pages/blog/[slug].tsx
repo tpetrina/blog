@@ -34,33 +34,39 @@ export default function BlogPostPage(props: Props) {
     >
       <Navigation />
 
-      <article className="blog px-4">
-        <header>
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">{post.title}</h1>
-          <p className="border-l-[4px] border-blue-400 pl-2">{post.summary}</p>
-        </header>
+      <Layout.Content>
+        <article className="blog px-4">
+          <header>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">
+              {post.title}
+            </h1>
+            <p className="border-l-[4px] border-blue-400 pl-2">
+              {post.summary}
+            </p>
+          </header>
 
-        <section className="my-4 ">
-          <WriterInfo post={post} readingTime={props.readingTime} />
+          <section className="my-4 ">
+            <WriterInfo post={post} readingTime={props.readingTime} />
+          </section>
+
+          <div
+            className="prose dark:prose-dark max-w-none"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </article>
+
+        <section className="flex flex-col p-4 space-y-2">
+          <hr className="border border-1 border-gray-300 dark:border-gray-600" />
+
+          <section className="flex flex-row items-center space-x-4">
+            <span>Change code theme:</span> <CodeTheme />
+          </section>
         </section>
 
-        <div
-          className="prose dark:prose-dark max-w-none"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </article>
+        <GiscusComments />
 
-      <section className="flex flex-col p-4 space-y-2">
-        <hr className="border border-1 border-gray-300 dark:border-gray-600" />
-
-        <section className="flex flex-row items-center space-x-4">
-          <span>Change code theme:</span> <CodeTheme />
-        </section>
-      </section>
-
-      <GiscusComments />
-
-      <Footer />
+        <Footer />
+      </Layout.Content>
     </Layout>
   );
 }

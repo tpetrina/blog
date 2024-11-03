@@ -1,0 +1,178 @@
+{
+  "main": {
+    "id": "5dce5b268700b534",
+    "type": "split",
+    "children": [
+      {
+        "id": "b45c6ef2ff270787",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f5cc7f94cc2c8687",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "data/posts/2024-11-03 Markdoc and Obsidian.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "2024-11-03 Markdoc and Obsidian"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9c4255fba205bd8c",
+    "type": "split",
+    "children": [
+      {
+        "id": "793ff4b568ba2093",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "281275e42093c01e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d8fcdab829986f60",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c2be18a800e157a8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5b4f662b590bb3dd",
+    "type": "split",
+    "children": [
+      {
+        "id": "b24be2406853807e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9c6ff9e2d83eb1ad",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "23e44f13522a0f9d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "1bbfd55e0ebc8981",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8bec11b4469abc3a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f5cc7f94cc2c8687",
+  "lastOpenFiles": [
+    "data/posts/2024-01-19-result-t-and-multiple-calls.md",
+    "data/posts/2024-11-03 Markdoc and Obsidian.md",
+    "pages/kb/markdoc/rendering-links.md",
+    "pages/kb/markdoc/rendering-images.md",
+    "public/images/obsidian-image-settings.png",
+    "pages/kb/typescript/zod-coerce-string-from-null.md",
+    "public/images/obsidian-links-settings.png",
+    "data/posts/2022-01-31-digital-garden.md",
+    "pages/notes/test-page.md",
+    "public/images/Pasted image 20241103111625.png",
+    "public/images/test-image.png",
+    "Untitled.md",
+    "HELP.md"
+  ]
+}

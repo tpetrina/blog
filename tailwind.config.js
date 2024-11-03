@@ -5,6 +5,9 @@ module.exports = {
   content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
   theme: {
     extend: {
+      colors: {
+        "surface-flat": "#033048",
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

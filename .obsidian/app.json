@@ -1,0 +1,11 @@
+{
+  "userIgnoreFilters": [
+    "node_modules/",
+    "out/"
+  ],
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "publi",
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative"
+}

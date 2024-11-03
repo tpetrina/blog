@@ -10,20 +10,22 @@ export default function Previews(
     <Layout>
       <Navigation />
 
-      <ul>
-        {props.paths.map((path) => {
-          const relativeUrl = path.params.slug.join("/");
-          return (
-            <li key={relativeUrl}>
-              <a target="_blank" href={`/kb/preview/${relativeUrl}`}>
-                {relativeUrl}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      <Layout.Content>
+        <ul>
+          {props.paths.map((path) => {
+            const relativeUrl = path.params.slug.join("/");
+            return (
+              <li key={relativeUrl}>
+                <a target="_blank" href={`/kb/preview/${relativeUrl}`}>
+                  {relativeUrl}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+        <pre>{JSON.stringify(props, null, 2)}</pre>
+      </Layout.Content>
     </Layout>
   );
 }

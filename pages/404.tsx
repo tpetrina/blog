@@ -7,11 +7,13 @@ export default function NotFoundPage() {
     <Layout>
       <Navigation />
 
-      <div className="px-4">
-        <H1>Uh-oh, no such page! :(</H1>
+      <Layout.Content>
+        <div className="px-4">
+          <H1>Uh-oh, no such page! :(</H1>
 
-        <p>Nothing to see here.</p>
-      </div>
+          <p>Nothing to see here.</p>
+        </div>
+      </Layout.Content>
     </Layout>
   );
 }
