@@ -1,10 +1,9 @@
 import Prism from "prismjs";
-import { PropsWithChildren, useEffect, useRef } from "react";
-
 import "prismjs";
+import "prismjs/components/prism-csharp";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
-import "prismjs/components/prism-csharp";
+import { PropsWithChildren, useEffect, useRef } from "react";
 
 export function CodeBlock({
   children,

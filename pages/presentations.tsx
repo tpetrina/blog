@@ -1,11 +1,11 @@
 import { NextPage } from "next";
 
+import Footer from "../components/footer";
 import { H1, H2 } from "../components/heading";
 import Layout from "../components/layout";
 import Navigation from "../components/navigation";
 import Presentations from "../components/presentations/presentations";
 import Videos from "../components/presentations/videos";
-import Footer from "../components/footer";
 
 const PresentationsPage: NextPage = () => {
   return (

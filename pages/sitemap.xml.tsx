@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
-import { getAllPosts } from "../lib/getPostBySlug";
+
 import { getAllKbFiles } from "../lib/getKbArticles";
+import { getAllPosts } from "../lib/getPostBySlug";
 
 const ROOT_URL = "https://tpetrina.com/";
 

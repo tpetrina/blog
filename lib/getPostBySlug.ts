@@ -1,6 +1,6 @@
 import fs from "fs";
-import { join, basename, dirname } from "path";
 import matter from "gray-matter";
+import { basename, dirname, join } from "path";
 
 export function getPostBySlug(
   slug: string,

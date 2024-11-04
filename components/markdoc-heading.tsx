@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import cn from "../lib/cn";
 
 export function Heading({
@@ -15,7 +16,10 @@ export function Heading({
     `h${level}`,
     {
       id,
-      className: cn("heading text-3xl md:text-5xl font-bold mb-4 text-white", className),
+      className: cn(
+        "heading text-3xl md:text-5xl font-bold mb-4 text-white",
+        className
+      ),
     },
     children
   );

@@ -1,15 +1,19 @@
 import ActiveLink from "./active-link";
 import ChangeThemeButton from "./change-theme-button";
 
+const className =
+  "h-full hover:border-b-blue-400 border-b border-b-transparent flex flex-row items-center [&>*]:flex-1 [&>*]:text-center px-2";
+const activeClassName = "border-b-blue-400/75";
+
 export default function Navigation() {
   return (
-    <nav className="py-4 px-4 flex flex-row items-center shadow-md fixed left-0 right-0 bg-surface-flat">
+    <nav className="px-4 flex flex-row shadow-md fixed left-0 right-0 bg-surface-flat">
       <section className="max-w-4xl px-4 mx-auto flex flex-row items-center justify-between w-full">
-        <ul className="flex flex-row items-center gap-8">
+        <ul className="grid grid-cols-6 h-full">
           <ActiveLink
             wrapper="li"
-            activeClassName="font-bold"
-            className="hover:underline underline-offset-4"
+            activeClassName={activeClassName}
+            className={className}
             href="/"
           >
             Home
@@ -17,16 +21,16 @@ export default function Navigation() {
 
           <ActiveLink
             wrapper="li"
-            activeClassName="font-bold"
-            className="hover:underline underline-offset-4"
+            activeClassName={activeClassName}
+            className={className}
             href="/blog"
           >
             Blog
           </ActiveLink>
           <ActiveLink
             wrapper="li"
-            activeClassName="font-bold"
-            className="hover:underline underline-offset-4"
+            activeClassName={activeClassName}
+            className={className}
             href="/til"
             title="Today I've learned"
           >
@@ -34,8 +38,8 @@ export default function Navigation() {
           </ActiveLink>
           <ActiveLink
             wrapper="li"
-            activeClassName="font-bold"
-            className="hover:underline underline-offset-4"
+            activeClassName={activeClassName}
+            className={className}
             href="/kb"
             title="Knowledge base"
           >
@@ -44,15 +48,15 @@ export default function Navigation() {
 
           <ActiveLink
             wrapper="li"
-            activeClassName="font-bold"
-            className="hover:underline underline-offset-4"
+            activeClassName={activeClassName}
+            className={className}
             href="/presentations"
           >
             Presentations
           </ActiveLink>
         </ul>
 
-        <section className="ml-auto">
+        <section className="ml-auto py-2">
           <ChangeThemeButton />
         </section>
       </section>
