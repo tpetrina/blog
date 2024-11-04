@@ -31,6 +31,7 @@ export async function markdownToHtml(markdown: string) {
     .use(remarkRehype)
     .use(rehypePrism)
     .use(rehypeStringify)
+    // @ts-ignore
     .use(readingTime)
     .process(markdown);
 
