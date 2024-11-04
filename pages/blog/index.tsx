@@ -21,7 +21,7 @@ export default function BlogPostsPage(
           <section className="h-[20px]" />
 
           <LinksList
-            files={props.allPosts.slice(0, 2).map((post) => ({
+            files={props.allPosts.map((post) => ({
               relativePath: `/blog/${post.slug}`,
               modifiedOn: post.publishedAt,
               fullPath: "",
