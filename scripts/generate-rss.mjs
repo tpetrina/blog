@@ -142,7 +142,20 @@ writeFileSync("public/atom", feed.atom1());
 // Output: JSON Feed 1.0
 writeFileSync("public/json", feed.json1());
 
+
+function dateOrStringToString(input) {
+  if (typeof input === "string") {
+    return input;
+  }
+  return input.toISOString();
+}
+
 function parseDate(input) {
-  const p = input.split("-").map((x) => parseInt(x, 10));
-  return new Date(p[0], p[1] - 1, p[2]);
+  try {
+    const p = dateOrStringToString(input).split("-").map((x) => parseInt(x, 10));
+    return new Date(p[0], p[1] - 1, p[2]);
+  } catch (e) {
+    console.error(`Error parsing date ${input}`);
+    return new Date();
+  }
 }
