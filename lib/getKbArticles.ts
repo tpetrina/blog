@@ -3,7 +3,13 @@ import matter from "gray-matter";
 import { join } from "path";
 
 export async function getAllKbFiles() {
-  const kbFolder = join(process.cwd(), "pages", "kb");
+  return [
+    ...(await getAllKbFilesFromFolder("kb")),
+    ...(await getAllKbFilesFromFolder("notes")),
+  ];
+}
+async function getAllKbFilesFromFolder(folder: string) {
+  const kbFolder = join(process.cwd(), "pages", folder);
   const folders = [kbFolder];
   const files: {
     relativePath: string;

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pages/notes/kcd-cph-2024-day-2.md",
+                "file": "pages/notes/micro/evolving-reddits-nfrastructure.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kcd-cph-2024-day-2"
+              "title": "evolving-reddits-nfrastructure"
             }
           }
         ]
@@ -162,20 +162,20 @@
   },
   "active": "8c45476efb35787b",
   "lastOpenFiles": [
+    "pages/notes/micro/debugging-under-fire.md",
+    "pages/notes/kcd-cph-2024-day-2.md",
     "public/images/kcd-cph-2024/pe-complexity.jpeg",
     "public/images/kcd-cph-2024/pe-isolation.jpeg",
     "public/images/kcd-cph-2024/pe-k8s.jpeg",
     "public/images/kcd-cph-2024/keynote-alert.jpeg",
-    "pages/notes/kcd-cph-2024-day-2.md",
     "public/images/kcd-cph-2024",
     "pages/notes/kcd-cph-2024-day-1.md",
     "public/images/kcd-cph-2024/keynote-alert2.jpeg",
     "pages/til/roslyn-efcore-sqlite-9.md",
     "pages/kb/markdoc/rendering-images.md",
     "pages/notes/test-page.md",
-    "pages/notes/micro/Evolving Reddit’s Infrastructure via Principled Platform Abstractions - Karan Thukral & Harvey Xia.md",
+    "pages/notes/micro/evolving-reddits-nfrastructure.md",
     "public/images/Achilles SDK.png",
-    "pages/notes/micro/Debugging Under Fire Keep your Head when Systems have Lost their Mind • Bryan Cantrill • GOTO 2017.md",
     "public/micro/Orchestration Architecture.png",
     "public/micro",
     "public/micro/Kubernetes Namespace.png",
