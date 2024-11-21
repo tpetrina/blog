@@ -30,7 +30,7 @@ export async function getStaticProps() {
     props: {
       files: (await getAllKbFiles()).map((kb) => ({
         ...kb,
-        relativePath: `/kb/${kb.relativePath.replace(".md", "")}`,
+        relativePath: `/${kb.folder}/${kb.relativePath.replace(".md", "")}`,
         modifiedOn: formatDate(kb.modifiedOn, "yyyy-MM-dd"),
       })),
     },

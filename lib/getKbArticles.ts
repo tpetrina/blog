@@ -8,10 +8,12 @@ export async function getAllKbFiles() {
     ...(await getAllKbFilesFromFolder("notes")),
   ];
 }
+
 async function getAllKbFilesFromFolder(folder: string) {
   const kbFolder = join(process.cwd(), "pages", folder);
   const folders = [kbFolder];
   const files: {
+    folder: string;
     relativePath: string;
     fullPath: string;
     modifiedOn: Date;
@@ -39,6 +41,7 @@ async function getAllKbFilesFromFolder(folder: string) {
           const { data } = matter(fileContents);
 
           files.push({
+            folder: folder,
             relativePath: childPath.replace(kbFolder, ""),
             fullPath: childPath,
             modifiedOn: info.mtime,
