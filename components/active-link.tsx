@@ -10,6 +10,7 @@ export default function ActiveLink(
     className?: string;
     activeClassName: string;
     title?: string;
+    exact?: boolean;
   }
 ) {
   const router = useRouter();
@@ -17,16 +18,16 @@ export default function ActiveLink(
     className,
     activeClassName,
     wrapper: Component = "section",
+    exact,
     ...rest
   } = props;
 
+  const isActive = exact
+    ? router.asPath === rest.href.toString()
+    : router.asPath.startsWith(rest.href.toString());
+
   return (
-    <Component
-      className={cn(
-        className,
-        router.asPath === rest.href ? activeClassName : ""
-      )}
-    >
+    <Component className={cn(className, isActive ? activeClassName : "")}>
       <Link {...rest} />
     </Component>
   );

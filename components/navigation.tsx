@@ -2,8 +2,8 @@ import ActiveLink from "./active-link";
 import ChangeThemeButton from "./change-theme-button";
 
 const className =
-  "h-full hover:border-b-blue-400 border-b border-b-transparent flex flex-row items-center [&>*]:flex-1 [&>*]:text-center px-2";
-const activeClassName = "border-b-blue-400/75";
+  "h-full hover:border-b-blue-400 border-b border-b-transparent flex flex-row items-center [&>*]:flex-1 [&>*]:text-center px-2 h-full";
+const activeClassName = "border-b-blue-400/50";
 
 export default function Navigation() {
   return (
@@ -15,6 +15,7 @@ export default function Navigation() {
             activeClassName={activeClassName}
             className={className}
             href="/"
+            exact
           >
             Home
           </ActiveLink>

@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "b45c6ef2ff270787",
+        "id": "9bcd940f9aa8b96c",
         "type": "tabs",
         "children": [
           {
-            "id": "f5cc7f94cc2c8687",
+            "id": "8c45476efb35787b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "data/posts/2024-11-03 Markdoc and Obsidian.md",
+                "file": "pages/notes/kcd-cph-2024-day-2.md",
                 "mode": "source",
                 "backlinks": true,
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "2024-11-03 Markdoc and Obsidian"
+              "title": "kcd-cph-2024-day-2"
             }
           }
         ]
@@ -156,22 +156,38 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f5cc7f94cc2c8687",
+  "active": "8c45476efb35787b",
   "lastOpenFiles": [
-    "data/posts/2024-01-19-result-t-and-multiple-calls.md",
-    "data/posts/2024-11-03 Markdoc and Obsidian.md",
-    "pages/kb/markdoc/rendering-links.md",
+    "public/images/kcd-cph-2024/pe-complexity.jpeg",
+    "public/images/kcd-cph-2024/pe-isolation.jpeg",
+    "public/images/kcd-cph-2024/pe-k8s.jpeg",
+    "public/images/kcd-cph-2024/keynote-alert.jpeg",
+    "pages/notes/kcd-cph-2024-day-2.md",
+    "public/images/kcd-cph-2024",
+    "pages/notes/kcd-cph-2024-day-1.md",
+    "public/images/kcd-cph-2024/keynote-alert2.jpeg",
+    "pages/til/roslyn-efcore-sqlite-9.md",
     "pages/kb/markdoc/rendering-images.md",
+    "pages/notes/test-page.md",
+    "pages/notes/micro/Evolving Reddit’s Infrastructure via Principled Platform Abstractions - Karan Thukral & Harvey Xia.md",
+    "public/images/Achilles SDK.png",
+    "pages/notes/micro/Debugging Under Fire Keep your Head when Systems have Lost their Mind • Bryan Cantrill • GOTO 2017.md",
+    "public/micro/Orchestration Architecture.png",
+    "public/micro",
+    "public/micro/Kubernetes Namespace.png",
+    "publi",
+    "data/posts/2024-11-03 Markdoc and Obsidian.md",
+    "pages/notes/micro",
+    "data/posts/2024-01-19-result-t-and-multiple-calls.md",
+    "pages/kb/markdoc/rendering-links.md",
     "public/images/obsidian-image-settings.png",
     "pages/kb/typescript/zod-coerce-string-from-null.md",
     "public/images/obsidian-links-settings.png",
     "data/posts/2022-01-31-digital-garden.md",
-    "pages/notes/test-page.md",
-    "public/images/Pasted image 20241103111625.png",
-    "public/images/test-image.png",
     "Untitled.md",
     "HELP.md"
   ]
