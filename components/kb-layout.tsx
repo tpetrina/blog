@@ -1,4 +1,5 @@
 import { MarkdocNextJsPageProps } from "@markdoc/next.js";
+import { formatDate, parseISO } from "date-fns";
 import { PropsWithChildren } from "react";
 
 import CodeTheme from "./code-theme";
@@ -37,7 +38,9 @@ export default function KBLayout({
             <section className="my-4">
               <WriterInfo
                 post={{
-                  publishedAt: rest.markdoc?.frontmatter.publishedAt ?? "",
+                  publishedAt: formatPublishedAt(
+                    rest.markdoc?.frontmatter.publishedAt
+                  ),
                   tags: rest.markdoc?.frontmatter.tags ?? [],
                 }}
                 readingTime={null}
@@ -60,4 +63,18 @@ export default function KBLayout({
       </Layout>
     </>
   );
+}
+
+function formatPublishedAt(
+  publishedAt: string | Date | undefined | null
+): string {
+  if (!publishedAt) {
+    return "";
+  }
+
+  if (typeof publishedAt === "string") {
+    return formatDate(parseISO(publishedAt), "MMMM dd, yyyy");
+  }
+
+  return formatDate(publishedAt, "MMMM dd, yyyy");
 }
