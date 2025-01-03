@@ -1,25 +1,35 @@
+import { formatDate } from "date-fns";
 import { lstat, readFile, readdir } from "fs/promises";
 import matter from "gray-matter";
 import { join } from "path";
 
 export async function getAllKbFiles() {
   return [
-    ...(await getAllKbFilesFromFolder("kb")),
-    ...(await getAllKbFilesFromFolder("notes")),
+    ...(await getAllMarkdownFilesFromFolder("kb")),
+    ...(await getAllMarkdownFilesFromFolder("notes")),
   ];
 }
 
-async function getAllKbFilesFromFolder(folder: string) {
-  const kbFolder = join(process.cwd(), "pages", folder);
-  const folders = [kbFolder];
+export async function getAllMarkdownFilesFromFolder(
+  folder: string,
+  fields: string[] = []
+) {
+  const folderPath = join(process.cwd(), "pages", folder);
+  const folders = [folderPath];
   const files: {
+    title: string;
+    slug: string;
+    publishedAt: string;
+    summary: string;
     folder: string;
     relativePath: string;
+    relativeUrl: string;
     fullPath: string;
     modifiedOn: Date;
     data: {
       [key: string]: any;
     };
+    content: string;
   }[] = [];
 
   while (folders.length > 0) {
@@ -29,25 +39,41 @@ async function getAllKbFilesFromFolder(folder: string) {
     const paths = await readdir(path);
     for (const p of paths) {
       const childPath = join(path, p);
-      console.log("Found", p);
 
       const info = await lstat(childPath);
 
       if (info.isDirectory()) {
         folders.push(childPath);
-      } else {
-        if (childPath.endsWith(".md")) {
-          const fileContents = await readFile(childPath, "utf8");
-          const { data } = matter(fileContents);
+      } else if (childPath.endsWith(".md")) {
+        console.debug("Found markdown file", p);
 
-          files.push({
-            folder: folder,
-            relativePath: childPath.replace(kbFolder, ""),
-            fullPath: childPath,
-            modifiedOn: info.mtime,
-            data,
-          });
+        const fileContents = await readFile(childPath, "utf8");
+        const { data, content } = matter(fileContents);
+
+        if (!data.publishedAt) {
+          console.error("No publishedAt found for", childPath);
         }
+
+        data.publishedAt = fixDate(data.publishedAt);
+
+        const relativePath = childPath.replace(folderPath, "");
+        const slug = relativePath.replace("/", "").replace(".md", "");
+
+        files.push({
+          title: data.title ?? slug,
+          slug,
+          publishedAt: data.publishedAt,
+          summary: data.summary ?? "",
+          folder,
+          relativePath: `${relativePath}`,
+          relativeUrl: `${folder}/${slug}`,
+          fullPath: childPath,
+          modifiedOn: info.mtime,
+          data,
+          content: fields.includes("content") ? content : "",
+        });
+      } else {
+        console.debug("Skipping file", p);
       }
     }
   }
@@ -64,4 +90,16 @@ export async function getKbFile(relativePath: string) {
     data,
     content,
   };
+}
+
+function fixDate(date: Date | undefined | string): string | null {
+  if (!date) {
+    return null;
+  }
+
+  if (typeof date === "string") {
+    return date;
+  }
+
+  return formatDate(date, "yyyy-MM-dd");
 }

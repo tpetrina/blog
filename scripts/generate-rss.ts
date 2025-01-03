@@ -1,13 +1,15 @@
-import { writeFileSync } from "fs";
 import { Feed } from "feed";
-
+import { writeFileSync } from "fs";
 import rehypePrism from "rehype-prism-plus";
 import rehypeStringify from "rehype-stringify";
 import { remark } from "remark";
 import remarkRehype from "remark-rehype";
-
 import { visit } from "unist-util-visit";
-import { getAllPosts, getAllKbArticles } from "./utils.mjs";
+
+import { getAllMarkdownFilesFromFolder } from "../lib/getKbArticles";
+import { getAllPosts } from "../lib/getPostBySlug";
+
+// import { getAllPosts, getAllKbArticles } from "./utils.mjs";
 
 function fixRelativeImages(options) {
   function imageVisitor(node) {
@@ -78,14 +80,17 @@ const feed = new Feed({
 });
 
 async function addPosts(posts) {
-  const mapped = posts.map((post) => ({
-    title: post.title,
-    url: `https://tpetrina.com/${post.fragment}/${post.slug}`,
-    description: post.summary,
-    content: post.content,
-    date: parseDate(post.publishedAt),
-    image: undefined,
-  }));
+  const mapped = posts.map((post) => {
+    const fragment = !!post.fragment ? `${post.fragment}/` : "";
+    return {
+      title: post.title,
+      url: `https://tpetrina.com/${fragment}${post.slug}`,
+      description: post.summary,
+      content: post.content,
+      date: parseDate(post.publishedAt),
+      image: undefined,
+    };
+  });
 
   for (let i = 0; i < mapped.length; ++i) {
     const post = mapped[i];
@@ -117,6 +122,12 @@ const posts = [
       "til"
     )
   ).map((p) => ({ ...p, fragment: "til" })),
+  ...(await getAllMarkdownFilesFromFolder("til", ["content"])).map((file) => ({
+    ...file,
+    publishedAt: file.publishedAt || file.modifiedOn.toISOString(),
+    slug: file.relativeUrl,
+    fragment: "",
+  })),
   // Not sure about KB just yet
   // ...(await getAllKbArticles()).map((kb) => ({
   //   ...kb,
@@ -142,7 +153,6 @@ writeFileSync("public/atom", feed.atom1());
 // Output: JSON Feed 1.0
 writeFileSync("public/json", feed.json1());
 
-
 function dateOrStringToString(input) {
   if (typeof input === "string") {
     return input;
@@ -152,7 +162,9 @@ function dateOrStringToString(input) {
 
 function parseDate(input) {
   try {
-    const p = dateOrStringToString(input).split("-").map((x) => parseInt(x, 10));
+    const p = dateOrStringToString(input)
+      .split("-")
+      .map((x) => parseInt(x, 10));
     return new Date(p[0], p[1] - 1, p[2]);
   } catch (e) {
     console.error(`Error parsing date ${input}`);

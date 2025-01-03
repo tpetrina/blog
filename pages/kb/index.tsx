@@ -28,10 +28,9 @@ export default function Index(
 export async function getStaticProps() {
   return {
     props: {
-      files: (await getAllKbFiles()).map((kb) => ({
-        ...kb,
-        relativePath: `/${kb.folder}/${kb.relativePath.replace(".md", "")}`,
-        modifiedOn: formatDate(kb.modifiedOn, "yyyy-MM-dd"),
+      files: (await getAllKbFiles()).map((file) => ({
+        ...file,
+        modifiedOn: formatDate(file.modifiedOn, "yyyy-MM-dd"),
       })),
     },
   };

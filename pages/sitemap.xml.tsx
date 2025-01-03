@@ -1,6 +1,9 @@
 import { GetServerSidePropsContext } from "next";
 
-import { getAllKbFiles } from "../lib/getKbArticles";
+import {
+  getAllKbFiles,
+  getAllMarkdownFilesFromFolder,
+} from "../lib/getKbArticles";
 import { getAllPosts } from "../lib/getPostBySlug";
 
 const ROOT_URL = "https://tpetrina.com/";
@@ -53,9 +56,13 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
       ...post,
       path: `til/${post.slug}`,
     }))),
+    ...(await getAllMarkdownFilesFromFolder("til")).map((file) => ({
+      publishedAt: file.publishedAt,
+      path: file.relativeUrl,
+    })),
     ...(await getAllKbFiles()).map((file) => ({
-      publishedAt: file.modifiedOn.toISOString(),
-      path: `kb${file.relativePath}`,
+      publishedAt: file.publishedAt,
+      path: file.relativeUrl,
     })),
   ];
 

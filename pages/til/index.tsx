@@ -1,3 +1,4 @@
+import { formatDate } from "date-fns";
 import { InferGetStaticPropsType } from "next";
 
 import Footer from "../../components/footer";
@@ -5,6 +6,7 @@ import { H1 } from "../../components/heading";
 import Layout from "../../components/layout";
 import LinksList from "../../components/links-list";
 import Navigation from "../../components/navigation";
+import { getAllMarkdownFilesFromFolder } from "../../lib/getKbArticles";
 import { getAllPosts } from "../../lib/getPostBySlug";
 
 export default function TodayILearnedPage(
@@ -45,11 +47,18 @@ export default function TodayILearnedPage(
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(
-    ["title", "slug", "publishedAt", "summary"],
-    "til"
+  const posts = getAllPosts(["title", "slug", "publishedAt", "summary"], "til");
+  const markdownFiles = (await getAllMarkdownFilesFromFolder("til")).map(
+    (md) => ({
+      ...md,
+      relativePath: md.relativeUrl,
+      modifiedOn: formatDate(md.modifiedOn, "yyyy-MM-dd"),
+    })
   );
-  allPosts.sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
+
+  const allPosts = [...posts, ...markdownFiles]
+    .filter((p) => !!p.publishedAt)
+    .sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
 
   return {
     props: {
