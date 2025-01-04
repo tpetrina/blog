@@ -1,35 +1,18 @@
-type Parameter = string | undefined | null;
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-export default function cn(...classes: Parameter[]): string | undefined {
-  if (classes.length === 0) {
-    return undefined;
-  }
-  if (classes.length === 1) {
-    return classes[0] || undefined;
-  }
+/**
+ * Utility function that combines Tailwind CSS classes with proper merging behavior.
+ * Uses clsx for conditional class joining and tailwind-merge to properly handle
+ * Tailwind class conflicts.
+ *
+ * @param inputs - Array of class values that can include strings, objects, or arrays
+ * @returns Merged className string with properly handled Tailwind classes
+ * @example
+ * cn('p-4', 'bg-red-500', { 'text-white': true }) // => 'p-4 bg-red-500 text-white'
+ * cn('p-2 bg-red-500', 'p-4') // => 'p-4 bg-red-500' (p-4 overrides p-2)
+ */
 
-  const parts = classes
-    .filter((c) => !!c)
-    .join(" ")
-    .split(" ")
-    .filter((c) => !!c);
-
-  const seen = new Set<string>();
-  for (let i = parts.length - 1; i >= 0; i--) {
-    const c = parts[i];
-    if (!c) {
-      continue;
-    }
-    const index = c.lastIndexOf("-");
-    if (index !== -1) {
-      const prefix = c.substring(0, index);
-      if (seen.has(prefix)) {
-        parts[i] = "";
-      } else {
-        seen.add(prefix);
-      }
-    }
-  }
-
-  return parts.join(" ");
+export default function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
