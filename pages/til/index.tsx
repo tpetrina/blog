@@ -47,7 +47,6 @@ export default function TodayILearnedPage(
 }
 
 export const getStaticProps = async () => {
-  const posts = getAllPosts(["title", "slug", "publishedAt", "summary"], "til");
   const markdownFiles = (await getAllMarkdownFilesFromFolder("til")).map(
     (md) => ({
       ...md,
@@ -56,7 +55,7 @@ export const getStaticProps = async () => {
     })
   );
 
-  const allPosts = [...posts, ...markdownFiles]
+  const allPosts = [...markdownFiles]
     .filter((p) => !!p.publishedAt)
     .sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
 

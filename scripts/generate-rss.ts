@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Feed } from "feed";
 import { writeFileSync } from "fs";
 import rehypePrism from "rehype-prism-plus";
@@ -115,12 +116,6 @@ const posts = [
       ["title", "slug", "publishedAt", "summary", "content"],
       "posts"
     )
-  ).map((p) => ({ ...p, fragment: "blog" })),
-  ...(
-    await getAllPosts(
-      ["title", "slug", "publishedAt", "summary", "content"],
-      "til"
-    )
   ).map((p) => ({ ...p, fragment: "til" })),
   ...(await getAllMarkdownFilesFromFolder("til", ["content"])).map((file) => ({
     ...file,
@@ -140,8 +135,6 @@ posts.sort((l, r) =>
   l.publishedAt < r.publishedAt ? 1 : l.publishedAt > r.publishedAt ? -1 : 0
 );
 
-// await addPosts("posts", "blog");
-// await addPosts("til", "til");
 await addPosts(posts);
 
 // Output: RSS 2.0
