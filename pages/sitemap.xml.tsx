@@ -52,10 +52,6 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
         path: `blog/${post.slug}`,
       })
     )),
-    ...(await getAllPosts(["publishedAt", "slug"], "til").map((post: any) => ({
-      ...post,
-      path: `til/${post.slug}`,
-    }))),
     ...(await getAllMarkdownFilesFromFolder("til")).map((file) => ({
       publishedAt: file.publishedAt,
       path: file.relativeUrl,
