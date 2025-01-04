@@ -74,7 +74,7 @@ const Home: NextPage = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      GigSheets - simplifying touring musicians' lives
+                      GigSheets - simplifying touring musicians&apos; lives
                     </a>
                   </li>
                   <li>

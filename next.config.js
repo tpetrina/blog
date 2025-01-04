@@ -1,4 +1,3 @@
-// const withPreact = require("next-plugin-preact");
 const withMarkdoc = require("@markdoc/next.js");
 
 /** @type {import('next').NextConfig} */

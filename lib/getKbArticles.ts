@@ -81,8 +81,8 @@ export async function getAllMarkdownFilesFromFolder(
   return files;
 }
 
-export async function getKbFile(relativePath: string) {
-  const kbFolder = join(process.cwd(), "pages", "kb");
+export async function getMarkdocFile(relativePath: string) {
+  const kbFolder = join(process.cwd(), "pages");
   const fullPath = join(kbFolder, relativePath);
   const fileContents = await readFile(fullPath, "utf8");
   const { data, content } = matter(fileContents);

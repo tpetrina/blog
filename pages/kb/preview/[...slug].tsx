@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Tags from "../../../components/tags";
-import { getAllKbFiles, getKbFile } from "../../../lib/getKbArticles";
+import { getAllKbFiles, getMarkdocFile } from "../../../lib/getKbArticles";
 
 type Props = {
   post: any;
@@ -43,7 +43,7 @@ export type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const { data, content } = await getKbFile(params.slug.join("/"));
+  const { data, content } = await getMarkdocFile(params.slug.join("/"));
 
   return {
     props: {
@@ -60,10 +60,10 @@ export async function getStaticProps({ params }: Params) {
 export async function getStaticPaths() {
   const posts = await getAllKbFiles();
   const paths = [
-    ...posts.map(({ relativePath }) => {
+    ...posts.map(({ relativePath, folder }) => {
       return {
         params: {
-          slug: relativePath.split("/").filter((x) => !!x),
+          slug: [folder, ...relativePath.split("/").filter((x) => !!x)],
         },
       };
     }),

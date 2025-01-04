@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType } from "next";
+
 import Layout from "../../../components/layout";
 import Navigation from "../../../components/navigation";
 import { getAllKbFiles } from "../../../lib/getKbArticles";
@@ -33,10 +34,10 @@ export default function Previews(
 export async function getStaticProps() {
   const posts = await getAllKbFiles();
   const paths = [
-    ...posts.map(({ relativePath }) => {
+    ...posts.map(({ relativePath, folder }) => {
       return {
         params: {
-          slug: relativePath.split("/").filter((x) => !!x),
+          slug: [folder, ...relativePath.split("/").filter((x) => !!x)],
         },
       };
     }),

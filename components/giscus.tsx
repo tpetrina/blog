@@ -2,7 +2,6 @@ import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 
 const Giscus = dynamic(() => import("@giscus/react"), {
-  suspense: true,
   ssr: false,
 });
 
