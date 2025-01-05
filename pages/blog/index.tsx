@@ -1,3 +1,4 @@
+import { formatDate } from "date-fns";
 import { InferGetStaticPropsType } from "next";
 
 import Footer from "../../components/footer";
@@ -5,6 +6,7 @@ import { H1 } from "../../components/heading";
 import Layout from "../../components/layout";
 import LinksList from "../../components/links-list";
 import Navigation from "../../components/navigation";
+import { getAllMarkdownFilesFromFolder } from "../../lib/getKbArticles";
 import { getAllPosts } from "../../lib/getPostBySlug";
 
 export default function BlogPostsPage(
@@ -37,7 +39,17 @@ export default function BlogPostsPage(
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(["title", "slug", "publishedAt", "summary"]);
+  const posts = getAllPosts(["title", "slug", "publishedAt", "summary"]);
+
+  const markdownFiles = (await getAllMarkdownFilesFromFolder("blog")).map(
+    (md) => ({
+      ...md,
+      relativePath: md.relativeUrl,
+      modifiedOn: formatDate(md.modifiedOn, "yyyy-MM-dd"),
+    })
+  );
+
+  const allPosts = [...posts, ...markdownFiles];
   allPosts.sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
 
   return {

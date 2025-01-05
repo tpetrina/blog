@@ -4,7 +4,7 @@ import { SVGProps } from "react";
 const navigation = [
   {
     name: "Facebook",
-    href: "https://facebook.com/tonipetrina",
+    href: "https://facebook.com/toni.petrina",
     icon: (props: SVGProps<SVGSVGElement>) => (
       <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
         <path

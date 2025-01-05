@@ -1,0 +1,14 @@
+{
+  "concurrency": 100,
+  "config": "string",
+  "recurse": true,
+  "format": "json",
+  "verbosity": "debug",
+  "path": "http://localhost:3000",
+  "linksToSkip": [
+    "https://forums.xamarin.com",
+    "https://github.com",
+    "https://facebook.com",
+    "https://tpetrina.com"
+  ]
+}
