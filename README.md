@@ -21,3 +21,9 @@ There are two templates for generating posts: `til` and `post`.
 To generate a Today-I-Learned post, write `yarn plop til "Name goes here"`.
 
 To generate a blog post, write `yarn plop post "Name goes here"`.
+
+## Check links integrity
+
+```
+npx linkinator http://localhost:3000/ --config linkinator-config.json | jq '.links | .[] | select(.state | contains("BROKEN")) | {url, parent}'
+```

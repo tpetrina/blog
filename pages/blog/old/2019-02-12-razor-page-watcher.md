@@ -7,7 +7,7 @@ tags: ["ASP.NET Core", "Razor Pages", "SignalR"]
 Writing Razor Pages in ASP.NET Core is easy, fast and fun. To really add to the productivity we want to have hot reload - a staple of Single Page Application frameworks like React or Vue. Let's see it in action.
 
 <!-- <img src="screen.gif" style="width: 100%; box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7)" /> -->
-![Preview of live reload](screen.gif)
+![Preview of live reload](../../../public/images/2019-02-12-reload.gif)
 
 If the source file is changed, reload the page opened in the browser. If using split screens or multi-monitor setup, being able to see changes without switching from the editor to the browser and manually editing the file is a huge time saver.
 

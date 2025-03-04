@@ -9,7 +9,7 @@ When posting a link to social media, a small preview of the link will be shown a
 
 The content of that preview can be controlled using the [Open Graph protocol](https://ogp.me/) with addition of site-specific properties. Filling title and description is straightforward from a blog post, but having a nice image is slightly trickier and requires creating one in an image editor.
 
-![A preview](2022-02-07-designing-with-html-css.png)
+![A preview](../../public/blog/2022-02-07-designing-with-html-css.png)
 
 Having a nice preview image is not a strong requirement, but it definitively makes links shine a bit. They could also be informative and display some relevant information, snippet or a hero image related to the link. Even though the image seen above may seem easy to create, after all it's just a photo and two lines of text, due to lack of familiarity with design tools it's a struggle. Formatting, centering, choosing a font and aligning text...these things are not trivial for someone rarely using image editors.
 

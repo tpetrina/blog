@@ -25,6 +25,7 @@ export default function BlogPostsPage(
           <LinksList
             files={props.allPosts.map((post) => ({
               relativePath: `/blog/${post.slug}`,
+              relativeUrl: `/blog/${post.slug}`,
               modifiedOn: post.publishedAt,
               fullPath: "",
               data: post,

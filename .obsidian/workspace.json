@@ -4,22 +4,61 @@
     "type": "split",
     "children": [
       {
-        "id": "9bcd940f9aa8b96c",
+        "id": "86995eed378debb0",
         "type": "tabs",
         "children": [
           {
-            "id": "8c45476efb35787b",
+            "id": "718a03e7aa6baf47",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pages/til/2025-01-02-cloudflare-upload-limit.md",
+                "file": "pages/til/2025-01-07-expo-local-build-deploy.md",
                 "mode": "source",
+                "source": false,
                 "backlinks": true,
-                "source": false
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
-              "title": "2025-01-02-cloudflare-upload-limit"
+              "title": "2025-01-07-expo-local-build-deploy"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e324145d8b9dd2e2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7cd19e7b7bed341f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pages/til/2025-02-11-nuget-edge-case.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "2025-02-11-nuget-edge-case"
             }
           }
         ]
@@ -41,7 +80,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -160,14 +200,22 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8c45476efb35787b",
+  "active": "718a03e7aa6baf47",
   "lastOpenFiles": [
+    "pages/til/2025-02-11-nuget-edge-case.md",
+    "tsconfig.tsbuildinfo",
+    "pages/til/2025-01-07-expo-local-build-deploy.md",
+    "pages/notes/2025-01-23-cncph.md",
+    "pages/notes/kcd-cph-2024-day-1.md",
+    "pages/til/2022-01-31-tailwind-and-components-folder.md",
+    "templates/til template.md",
+    "pages/til/2025-01-02-cloudflare-upload-limit.md",
+    "templates",
     "scripts/generate-rss.ts",
     "scripts/test.ts",
     "scripts/test.mts",
     "data/posts/2024-11-03 Markdoc and Obsidian.md",
     "pages/blog/2025-01-02-cloudflare-upload-limit.md",
-    "pages/til/2025-01-02-cloudflare-upload-limit.md",
     "public/images/2025-01-02-self-signed-certs.png",
     "public/images/2025-01-02-cf-disable-orange-cloud.png",
     "pages/notes/micro/evolving-reddits-infrastructure.md",
@@ -178,7 +226,6 @@
     "public/images/kcd-cph-2024/pe-k8s.jpeg",
     "public/images/kcd-cph-2024/keynote-alert.jpeg",
     "public/images/kcd-cph-2024",
-    "pages/notes/kcd-cph-2024-day-1.md",
     "public/images/kcd-cph-2024/keynote-alert2.jpeg",
     "pages/til/roslyn-efcore-sqlite-9.md",
     "pages/kb/markdoc/rendering-images.md",

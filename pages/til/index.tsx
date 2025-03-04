@@ -33,6 +33,7 @@ export default function TodayILearnedPage(
           <LinksList
             files={props.allPosts.map((post) => ({
               relativePath: `/til/${post.slug}`,
+              relativeUrl: `/til/${post.slug}`,
               modifiedOn: post.publishedAt,
               fullPath: "",
               data: post,
