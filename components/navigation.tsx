@@ -12,7 +12,7 @@ export default function Navigation() {
   return (
     <nav className="px-4 flex flex-row shadow-md fixed left-0 right-0 bg-surface-flat">
       <section className="max-w-4xl px-4 mx-auto flex flex-row items-center justify-between w-full">
-        <ul className="grid grid-cols-6 h-full">
+        <ul className="grid grid-cols-6 h-full my-4">
           <ActiveLink
             wrapper="li"
             activeClassName={activeClassName}
@@ -60,9 +60,9 @@ export default function Navigation() {
           </ActiveLink>
         </ul>
 
-        <section className="ml-auto py-2">
+        {/* <section className="ml-auto py-2">
           <ChangeThemeButton />
-        </section>
+        </section> */}
       </section>
     </nav>
   );
