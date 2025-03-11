@@ -45,7 +45,6 @@ export async function getAllMarkdownFilesFromFolder(
       if (info.isDirectory()) {
         folders.push(childPath);
       } else if (childPath.endsWith(".md")) {
-        console.debug("Found markdown file", p);
 
         const fileContents = await readFile(childPath, "utf8");
         const { data, content } = matter(fileContents);

@@ -7,7 +7,6 @@ import Layout from "../../components/layout";
 import LinksList from "../../components/links-list";
 import Navigation from "../../components/navigation";
 import { getAllMarkdownFilesFromFolder } from "../../lib/getKbArticles";
-import { getAllPosts } from "../../lib/getPostBySlug";
 
 export default function TodayILearnedPage(
   props: InferGetStaticPropsType<typeof getStaticProps>

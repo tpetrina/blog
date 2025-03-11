@@ -8,9 +8,6 @@ import remarkRehype from "remark-rehype";
 import { visit } from "unist-util-visit";
 
 import { getAllMarkdownFilesFromFolder } from "../lib/getKbArticles";
-import { getAllPosts } from "../lib/getPostBySlug";
-
-// import { getAllPosts, getAllKbArticles } from "./utils.mjs";
 
 function fixRelativeImages(options) {
   function imageVisitor(node) {
