@@ -61,16 +61,19 @@ export default function Videos() {
           <li className="mr-4 mb-4 w-full" key={video.url}>
             <section className="flex flex-col-reverse sm:flex-row w-full sm:space-x-4">
               <YoutubeVideo src={video.url.replace("watch?v=", "embed/")} />
+
               <section className="flex flex-col">
                 <h4 className="text-lg leading-tight">
                   <a href={video.url}>{video.title}</a>
                 </h4>
-                <p className="text-gray-700 dark:text-gray-200">{video.description}</p>
+
+                <p className="">{video.description}</p>
               </section>
             </section>
           </li>
         );
       })}
+      
       <li className="mr-4 mb-4 w-full">
         <VimeoVideoCQRS />
       </li>

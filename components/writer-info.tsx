@@ -19,7 +19,7 @@ export default function WriterInfo({
 
       <span className="flex flex-col space-y-1">
         Toni Petrina
-        <section className="flex flex-row items-center space-x-1 text-sm text-gray-700 dark:text-gray-300">
+        <section className="flex flex-row items-center space-x-1 text-sm text-gray-300 dark:text-gray-300">
           {publishedAt ? (
             <>
               <span>Published on {publishedAt}</span>

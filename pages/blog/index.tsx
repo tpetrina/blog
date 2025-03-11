@@ -40,17 +40,12 @@ export default function BlogPostsPage(
 }
 
 export const getStaticProps = async () => {
-  const posts = getAllPosts(["title", "slug", "publishedAt", "summary"]);
+  const allPosts = (await getAllMarkdownFilesFromFolder("blog")).map((md) => ({
+    ...md,
+    relativePath: md.relativeUrl,
+    modifiedOn: formatDate(md.modifiedOn, "yyyy-MM-dd"),
+  }));
 
-  const markdownFiles = (await getAllMarkdownFilesFromFolder("blog")).map(
-    (md) => ({
-      ...md,
-      relativePath: md.relativeUrl,
-      modifiedOn: formatDate(md.modifiedOn, "yyyy-MM-dd"),
-    })
-  );
-
-  const allPosts = [...posts, ...markdownFiles];
   allPosts.sort((l, r) => r.publishedAt.localeCompare(l.publishedAt));
 
   return {

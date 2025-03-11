@@ -11,7 +11,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.gray.700"),
+            color: theme("colors.white"),
             a: {
               color: theme("colors.blue.500"),
               "&:hover": {
@@ -19,7 +19,11 @@ module.exports = {
               },
               code: { color: theme("colors.blue.400") },
             },
+            h1: {
+              color: theme("colors.gray.100"),
+            },
             "h2,h3,h4": {
+              color: theme("colors.gray.200"),
               "scroll-margin-top": spacing[32],
             },
             thead: {
@@ -32,7 +36,7 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme("colors.gray.200"),
+            color: theme("colors.gray.300"),
             a: {
               color: theme("colors.blue.400"),
               "&:hover": {
@@ -45,7 +49,7 @@ module.exports = {
               color: theme("colors.gray.300"),
             },
             "h2,h3,h4": {
-              color: theme("colors.gray.100"),
+              color: theme("colors.gray.400"),
               "scroll-margin-top": spacing[32],
             },
             hr: { borderColor: theme("colors.gray.700") },

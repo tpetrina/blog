@@ -1,8 +1,11 @@
+import cn from "../lib/cn";
 import ActiveLink from "./active-link";
 import ChangeThemeButton from "./change-theme-button";
 
-const className =
-  "h-full hover:border-b-blue-400/20 border-b border-b-transparent flex flex-row items-center [&>*]:flex-1 [&>*]:text-center px-2";
+const className = cn(
+  "h-full hover:border-b-blue-400/20 border-b border-b-transparent flex flex-row items-center [&>*]:flex-1 [&>*]:text-center px-2",
+  "text-white"
+);
 const activeClassName = "border-b-blue-400";
 
 export default function Navigation() {

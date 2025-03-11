@@ -1,13 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
-import Tags from "../../../components/tags";
-import { getAllKbFiles, getMarkdocFile } from "../../../lib/getKbArticles";
+import Tags from "../../components/tags";
+import { getAllMarkdownFilesFromFolder } from "../../lib/getKbArticles";
+import { getPostByRelativePath } from "../../lib/getPostBySlug";
+import { markdownToHtml } from "../../lib/markdownToHtml";
 
 type Props = {
   post: any;
   readingTime: any;
 };
 
-export default function KbArticlePreviewPage(props: Props) {
+export default function BlogPostPreviewPage(props: Props) {
   const { post } = props;
 
   return (
@@ -18,7 +19,7 @@ export default function KbArticlePreviewPage(props: Props) {
 
           <section className="flex flex-col space-y-2">
             <p className="text-2xl">{post.summary}</p>
-            <Tags tags={post.tags} className="text-xl" />
+            <Tags tags={props.post.tags} className="text-xl" />
           </section>
         </section>
 
@@ -43,31 +44,42 @@ export type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const { data, content } = await getMarkdocFile(params.slug.join("/"));
+  const post = await getPostByRelativePath(params.slug.join("/"), [
+    "title",
+    "date",
+    "slug",
+    "author",
+    "content",
+    "ogImage",
+    "coverImage",
+    "publishedAt",
+    "summary",
+    "tags",
+  ]);
+  const { html: content, readingTime } = await markdownToHtml(
+    post.content || ""
+  );
 
   return {
     props: {
       post: {
-        ...data,
-        slug: params.slug,
-        content: content,
+        ...post,
+        content,
       },
-      readingTime: "0",
+      readingTime,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllKbFiles();
-  const paths = [
-    ...posts.map(({ relativePath, folder }) => {
-      return {
-        params: {
-          slug: [folder, ...relativePath.split("/").filter((x) => !!x)],
-        },
-      };
-    }),
-  ];
+  const posts = await getAllMarkdownFilesFromFolder(".");
+  const paths = posts.map(({ relativePath }) => {
+    return {
+      params: {
+        slug: relativePath.split("/").filter((x) => !!x && x !== "."),
+      },
+    };
+  });
 
   return {
     paths,

@@ -13,7 +13,7 @@ const PresentationsPage: NextPage = () => {
       <Navigation />
 
       <Layout.Content asChild>
-        <main className="px-4">
+        <main className="px-4 text-gray-100">
           <H1>Presentations</H1>
 
           <H2>Youtube</H2>

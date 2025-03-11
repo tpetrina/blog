@@ -111,25 +111,12 @@ async function addPosts(posts) {
 }
 
 const posts = [
-  ...(
-    await getAllPosts(
-      ["title", "slug", "publishedAt", "summary", "content"],
-      "posts"
-    )
-  ).map((p) => ({ ...p, fragment: "til" })),
-  ...(await getAllMarkdownFilesFromFolder("til", ["content"])).map((file) => ({
+  ...(await getAllMarkdownFilesFromFolder("blog", ["content"])).map((file) => ({
     ...file,
     publishedAt: file.publishedAt || file.modifiedOn.toISOString(),
     slug: file.relativeUrl,
     fragment: "",
   })),
-  // Not sure about KB just yet
-  // ...(await getAllKbArticles()).map((kb) => ({
-  //   ...kb,
-  //   publishedAt: kb.publishedAt || kb.modifiedOn.toISOString(),
-  //   slug: kb.slug.substring(1),
-  //   fragment: "kb",
-  // })),
 ];
 posts.sort((l, r) =>
   l.publishedAt < r.publishedAt ? 1 : l.publishedAt > r.publishedAt ? -1 : 0

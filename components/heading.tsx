@@ -4,8 +4,8 @@ type HeadingProps = {
   className?: string;
 };
 const styles = {
-  h1: "font-bold text-3xl md:text-5xl mt-4 mr-4 mb-2 text-black dark:text-white",
-  h2: "font-bold text-2xl md:text-4xl mt-4 mr-4 mb-2 text-black dark:text-white",
+  h1: "font-bold text-3xl md:text-5xl mt-4 mr-4 mb-2 text-gray-100 dark:text-white",
+  h2: "font-bold text-2xl md:text-4xl mt-4 mr-4 mb-2 text-gray-100 dark:text-white",
 };
 
 export function H1(props: React.PropsWithChildren<HeadingProps>) {

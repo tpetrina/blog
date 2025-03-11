@@ -49,7 +49,7 @@ export default function CodeTheme() {
         <select
           onChange={(e) => updateTheme(e.target.value)}
           value={theme}
-          className="block appearance-none w-full bg-white dark:bg-gray-700 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          className="block appearance-none w-full bg-white dark:bg-gray-700 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-black dark:text-white"
         >
           <option value="shadesofpurple">Shades of Purple</option>
           <option value="okaidia">Okaidia</option>

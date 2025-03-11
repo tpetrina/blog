@@ -4,6 +4,7 @@ import Image from "next/image";
 import Footer from "../components/footer";
 import Layout from "../components/layout";
 import Navigation from "../components/navigation";
+import cn from "../lib/cn";
 
 const Home: NextPage = () => {
   return (
@@ -11,16 +12,22 @@ const Home: NextPage = () => {
       <Navigation />
 
       <Layout.Content>
-        <main className="px-4 flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16">
+        <main
+          className={cn(
+            "px-4 flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16",
+            "text-white/90"
+          )}
+        >
           <section className="flex flex-col-reverse sm:flex-row w-full">
-            <section className="flex flex-col mr-8">
-              <h1 className="font-bold text-3xl md:text-5xl mt-4 mr-4 mb-2 text-black dark:text-white">
+            <section className="flex flex-col mr-8 prose dark:prose-invert">
+              <h1 className="font-bold text-3xl md:text-5xl mt-4 mr-4 mb-2">
                 Toni Petrina
               </h1>
-              <h2 className="mb-4 text-gray-800 dark:text-gray-100 font-light">
+
+              <h2 className="mb-4 font-light">
                 Lead Site Reliability Engineer @ Visma e-conomic a/s
               </h2>
-              <p className="text-gray-700 dark:text-gray-100">
+              <p className="">
                 Hi, I am Toni and welcome to my blog/scratchpad/digital garden.
                 Some of the writings will be chronologically added as blog
                 posts, but some will be notes that are permanently curated.

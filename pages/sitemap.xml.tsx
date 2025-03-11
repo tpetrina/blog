@@ -4,9 +4,11 @@ import {
   getAllKbFiles,
   getAllMarkdownFilesFromFolder,
 } from "../lib/getKbArticles";
-import { getAllPosts } from "../lib/getPostBySlug";
+import { isDevelopment } from "./_document";
 
-const ROOT_URL = "https://tpetrina.com/";
+const ROOT_URL = isDevelopment()
+  ? "http://localhost:3000/"
+  : "https://tpetrina.com/";
 
 function generateSitemap(
   posts: {
@@ -46,19 +48,11 @@ function SiteMap() {
 export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   // We generate the XML sitemap with all examples
   const posts: { publishedAt: string; path: string }[] = [
-    ...(await getAllPosts(["publishedAt", "slug"], "posts").map(
-      (post: any) => ({
-        ...post,
-        path: `blog/${post.slug}`,
-      })
-    )),
-    ...(await getAllMarkdownFilesFromFolder("til")).map((file) => ({
+    ...(await getAllMarkdownFilesFromFolder(".")).map((file) => ({
       publishedAt: file.publishedAt,
-      path: file.relativeUrl,
-    })),
-    ...(await getAllKbFiles()).map((file) => ({
-      publishedAt: file.publishedAt,
-      path: file.relativeUrl,
+      path: file.relativeUrl.startsWith("./")
+        ? file.relativeUrl.replace("./", "")
+        : file.relativeUrl,
     })),
   ];
 

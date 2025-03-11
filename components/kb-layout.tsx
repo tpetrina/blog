@@ -27,7 +27,7 @@ export default function KBLayout({
         <Navigation />
 
         <Layout.Content>
-          <section className="px-4">
+          <section className="px-4 text-white">
             <header>
               <h1 className="text-3xl md:text-5xl font-bold mb-4">{title}</h1>
               {summary && (
